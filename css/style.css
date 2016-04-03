@@ -1,0 +1,65 @@
+#personalInformation, #bankInformation, #terms{
+    /*background: url("form-fieldset.gif") repeat-x scroll left bottom #F8FDEF;*/
+    border: 1px solid #DFDCDC;
+    border-radius: 15px 15px 15px 15px;
+    display: inline-block;
+    margin-bottom: 30px;
+    margin-left: 20px;
+    margin-top: 10px;
+    padding: 25px 50px 10px;
+    width: 950px;
+}
+
+#addressDetails {
+    /*background: url("form-fieldset.gif") repeat-x scroll left bottom #F8FDEF;*/
+    border: 1px solid #DFDCDC;
+    border-radius: 15px 15px 15px 15px;
+    display: inline-block;
+    margin-bottom: 30px;
+    margin-left: 20px;
+    margin-top: 10px;
+    padding: 25px 50px 10px;
+    width: 1150px;
+}
+
+#personalInformation.fieldgroup, #addressDetails.fieldgroup, #bankInformation.fieldgroup{
+    background: url("form-divider.gif") repeat-x scroll left top transparent;
+    display: inline-block;
+    padding: 8px 10px;
+    width: 340px;
+}
+
+#personalInformation.fieldgroup label, #addressDetails.fieldgroup label, #bankInformation.fieldgroup label{
+    float: left;
+    padding: 15px 0 0;
+    text-align: right;
+    width: 110px;
+}
+
+#personalInformation.fieldgroup input, #personalInformation.fieldgroup textarea, #personalInformation.fieldgroup select, #addressDetails.fieldgroup input, #addressDetails.fieldgroup textarea, #addressDetails.fieldgroup select, #bankInformation.fieldgroup input, #bankInformation.fieldgroup textarea, #bankInformation.fieldgroup select{
+    float: right;
+    margin: 10px 0;
+    height: 25px;
+}
+
+#personalInformation.submit, #addressDetails.submit, #bankInformation.submit  {
+    padding: 10px;
+    width: 220px;
+    height: 40px !important;
+}
+
+input[type="text"]
+{
+	width:300px !important;
+}
+
+div.invalid
+{
+	color: #FF0000 !important;
+}
+
+label.input-sm
+{
+	font-weight: bold;
+	font-size: 14px;
+}
