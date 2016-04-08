@@ -1,12 +1,12 @@
 <?php
 require_once("connection.php");
-//print_r($_REQUEST);
+print_r($_REQUEST);
 session_start();
 if(isset($_REQUEST['txtPanCardNo']) && ($_REQUEST['txtPanCardNo']<>""))	{
 	//echo "In submit";
 	$_SESSION['pan'] = $_REQUEST['txtPanCardNo'];
 
-	$query = "Insert into personalInformation(PAN,FirstName,MiddleName,FatherName,LastName,Mobile,ContactNumber,BirthDate,Email,Gender) values('".$_REQUEST['txtPanCardNo']."','".$_REQUEST['txtFirstName']."','".$_REQUEST['txtMiddleName']."','".$_REQUEST['txtFathersName']."','".$_REQUEST['txtLastName']."','".$_REQUEST['txtMobileNo']."','".$_REQUEST['txtContactNo']."','".$_REQUEST['txtDOB']."','".$_REQUEST['txtEmail']."','".$_REQUEST['gender']."')";
+	$query = "Insert into personalInformation(PAN,FirstName,MiddleName,FatherName,LastName,Mobile,ContactNumber,BirthDate,Email,Gender) values('".strtoupper($_REQUEST['txtPanCardNo'])."','".strtoupper($_REQUEST['txtFirstName'])."','".strtoupper($_REQUEST['txtMiddleName'])."','".strtoupper($_REQUEST['txtFathersName'])."','".strtoupper($_REQUEST['txtLastName'])."','".$_REQUEST['txtMobileNo']."','".$_REQUEST['txtContactNo']."','".$_REQUEST['txtDOB']."','".$_REQUEST['txtEmail']."','".$_REQUEST['gender']."')";
 	$insertRes = mysqli_query($con,$query);
 	
 	if (!$insertRes) {
@@ -77,7 +77,7 @@ if(isset($_REQUEST['txtPanCardNo']) && ($_REQUEST['txtPanCardNo']<>""))	{
 					rules: {
 						txtPanCardNo: {
 							required: true,
-							minlength: 10,
+							minlength: 10
 						},
 						txtDOB: "required",
 						txtFirstName: "required",
@@ -86,7 +86,6 @@ if(isset($_REQUEST['txtPanCardNo']) && ($_REQUEST['txtPanCardNo']<>""))	{
 						txtMobileNo: {
 							required:true, 
 							integer: true,
-							regx:/^(?![8]{10}|[9]{10})[7-9]{1}[0-9]{9}$/,
                             minlength:10,
                             maxlength:14
 						},
@@ -96,13 +95,13 @@ if(isset($_REQUEST['txtPanCardNo']) && ($_REQUEST['txtPanCardNo']<>""))	{
 						}
 					},
 					messages: {
-						txtPanCardNo: "PAN Should have of 10 characters",
+						txtPanCardNo: "PAN Card No. should be 10 characters",
 						txtDOB: "Please enter your Date of birth",
 						txtFirstName: "Please enter your First Name",
 						txtFathersName: "Please enter your Father's name",
 						txtLastName: "Please enter your Last Name",
 						txtEmail: "Please enter a valid Email Address",
-						txtMobileNo: "Please enter your Mobile Number"
+						txtMobileNo: "Please enter your Mobile Number of 10 digits"
 					},
 					submitHandler: function(form) {
 						form.submit();

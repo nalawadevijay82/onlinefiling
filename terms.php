@@ -15,7 +15,7 @@ if(!isset($_SESSION['recordId']) || $_SESSION['recordId']=="")	{
       <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
       <title>Online IT Filing : Bank Information</title>
 
-	  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+	  <script src="js/jquery-1.9.1.js"></script>
 	  <!-- CSS  -->      
       <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
       <!-- Font Awesome -->
@@ -29,8 +29,8 @@ if(!isset($_SESSION['recordId']) || $_SESSION['recordId']=="")	{
       <!-- Main css File -->
       <link href="style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 	  <!-- For datePicker	-->
-	  <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-	  <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
+	  <link rel="stylesheet" href="css/jquery-ui.css">
+	  <script src="js/jquery-ui.js"></script>
 
       <!-- Extra css & JS File -->
       <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
@@ -216,8 +216,8 @@ if(!isset($_SESSION['recordId']) || $_SESSION['recordId']=="")	{
 						$charges = $chargesData[$count];
 						?>
 
-						<p>I, <strong><?=$firstName." ".$lastName?></strong>, son/ daughter of <strong><?=$fatherName?></strong>, bearing PAN  <strong><?=$PAN?></strong> solemnly declare that to the best of my knowledge and belief, the information given to you is correct and complete and that the amount of income and other particulars shown therein are truly stated and are in accordance with the provisions of the Income- tax Act, 1961, in respect of income chargeable to Income-tax of finanical year <strong><?=$financialYear?></strong> I hereby authorize www.onlineitfiniling.in and their personnel to scrutinize the information furnished by me, to make income and tax computations, pay tax amount furnished by me, if any, and to file the Income Tax Return on my behalf, with the Income tax Department, in the capacity of an Electronic Return Intermediary (ERI) authorized by the Income Tax Department, Govt. of India. I hereby take the complete responsibility for the information furnished by me in this behalf, not withstanding anything of the provisions of the Income Tax Act, 1961 and rules thereof. I understand that the time taken by www.onlineitfiniling.in to file my tax return and furnish me the acknowledgment is 2 working days, and the fee charged is as mentioned below. I have read Privacy Policy.</p>
-						<p>Have coupon code? &nbsp; <Input type="text" id="coupon" name="coupon">&nbsp;
+						<p>I, <strong><?=$firstName." ".$lastName?></strong>, son/ daughter of <strong><?=$fatherName?></strong>, bearing PAN  <strong><?=$PAN?></strong> solemnly declare that to the best of my knowledge and belief, the information given to you is correct and complete and that the amount of income and other particulars shown therein are truly stated and are in accordance with the provisions of the Income- tax Act, 1961, in respect of income chargeable to Income-tax of financial year <strong><?=$financialYear?></strong>. I hereby authorize www.onlineitfiniling.in and their personnel to scrutinize the information furnished by me, to make income and tax computations, pay tax amount furnished by me, if any, and to file the Income Tax Return on my behalf, with the Income tax Department, in the capacity of an Electronic Return Intermediary (ERI) <strong>registered with </strong> the Income Tax Department, Govt. of India. I hereby take the complete responsibility for the information furnished by me in this behalf, not withstanding anything of the provisions of the Income Tax Act, 1961 and rules thereof. I understand that the time taken by www.onlineitfiniling.in to file my tax return and furnish me the acknowledgment is 5 working days, and the fee charged is as mentioned below. I have read Privacy Policy.</p>
+						<p>Have discount code? &nbsp; <Input type="text" id="coupon" name="coupon">&nbsp;
 						<input type="button" name="apply" id="apply" value="Apply" onClick="couponCode(document.getElementById('coupon').value,<?=$charges?>);">
 						&nbsp;<span id="couponMsg" name="couponMsg"></span>
 						</p>
@@ -262,7 +262,7 @@ if(!isset($_SESSION['recordId']) || $_SESSION['recordId']=="")	{
         </main>
       </div>
       <!-- jQuery Library -->
-      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+      <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
       <!-- Materialize js -->
       <script type="text/javascript" src="js/materialize.min.js"></script>
       <!-- Skill Progress Bar -->
@@ -271,7 +271,7 @@ if(!isset($_SESSION['recordId']) || $_SESSION['recordId']=="")	{
       <!-- Owl slider -->      
       <script src="js/owl.carousel.min.js"></script>    
       <!-- Mixit slider  -->
-      <script src="http://cdn.jsdelivr.net/jquery.mixitup/latest/jquery.mixitup.min.js"></script>
+      <script src="js/jquery.mixitup.min.js"></script>
       <!-- counter -->
       <script src="js/waypoints.min.js"></script>
       <script src="js/jquery.counterup.min.js"></script>     

@@ -34,7 +34,7 @@ if(isset($_REQUEST['txtName']) && ($_REQUEST['txtName']<>""))	{
       <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
       <title>Online IT Filing : Bank Information</title>
 
-	  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+	  <script src="js/jquery-1.9.1.js"></script>
 	  <!-- CSS  -->      
       <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
       <!-- Font Awesome -->
@@ -48,8 +48,8 @@ if(isset($_REQUEST['txtName']) && ($_REQUEST['txtName']<>""))	{
       <!-- Main css File -->
       <link href="style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 	  <!-- For datePicker	-->
-	  <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-	  <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
+	  <link rel="stylesheet" href="css/jquery-ui.css">
+	  <script src="js/jquery-ui.js"></script>
 
       <!-- Extra css & JS File -->
       <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
@@ -163,7 +163,7 @@ if(isset($_REQUEST['txtName']) && ($_REQUEST['txtName']<>""))	{
 				  <h2 class="title">Bank Information</h2>
 
 					<p>W.E.F. AY 2011-12 it is mandatory to provide bank account details in Income Tax return irrespective of tax refund. Enter bank account details: </p>
-					<p><input type="checkbox" name="receiveCredit" id="receiveCredit" value="Yes" checked="checked">&nbsp; Would you like to receive credit (if any) via ECS (Electronic Clearing System)?<br></p>
+					<p><input type="checkbox" name="receiveCredit" id="receiveCredit" value="Yes" checked="checked" onclick="return false">&nbsp; Would you like to receive credit (if any) via ECS (Electronic Clearing System)?<br></p>
 						<div class="form-group">
 							<div style="float:left;">
 								<div class="custgrp">
@@ -193,7 +193,7 @@ if(isset($_REQUEST['txtName']) && ($_REQUEST['txtName']<>""))	{
 									<label class="col-sm-2 control-label input-sm" for="textinput">
 										MICR Code:</label>
 									<div class="col-sm-3">
-										<input type="text" id="txtMICR" placeholder="MICR Code" class="form-control input-sm" maxlength="15" name="txtMICR">
+										<input type="text" id="txtMICR" placeholder="MICR Code" class="form-control input-sm" maxlength="15" name="txtMICR" value="MICR" readOnly>
 									</div>
 								</div>
 							</div>
@@ -217,7 +217,7 @@ if(isset($_REQUEST['txtName']) && ($_REQUEST['txtName']<>""))	{
 									<label class="col-sm-2 control-label input-sm" for="textinput">
 										IFSC Code:</label>
 									<div class="col-sm-3">
-										<input type="text" id="txtIFSC" placeholder="IFSC Code" class="form-control input-sm" name="txtIFSC">
+										<input type="text" id="txtIFSC" placeholder="IFSC Code" class="form-control input-sm" name="txtIFSC" maxlength="11">
 									</div>
 								</div>
 							</div>
@@ -257,7 +257,7 @@ if(isset($_REQUEST['txtName']) && ($_REQUEST['txtName']<>""))	{
         </main>
       </div>
       <!-- jQuery Library -->
-      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+      <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
       <!-- Materialize js -->
       <script type="text/javascript" src="js/materialize.min.js"></script>
       <!-- Skill Progress Bar -->
@@ -266,7 +266,7 @@ if(isset($_REQUEST['txtName']) && ($_REQUEST['txtName']<>""))	{
       <!-- Owl slider -->      
       <script src="js/owl.carousel.min.js"></script>    
       <!-- Mixit slider  -->
-      <script src="http://cdn.jsdelivr.net/jquery.mixitup/latest/jquery.mixitup.min.js"></script>
+      <script src="js/jquery.mixitup.min.js"></script>
       <!-- counter -->
       <script src="js/waypoints.min.js"></script>
       <script src="js/jquery.counterup.min.js"></script>     

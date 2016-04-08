@@ -208,21 +208,21 @@ if(isset($_REQUEST['txtPermAddress']) && ($_REQUEST['txtPermAddress']<>""))	{
 								<label class="col-sm-2 control-label input-sm" for="textinput">
 									Address:</label>
 								<div class="col-sm-3 has-success">
-									<input type="text" id="txtPermAddress" placeholder="Enter Address" name="txtPermAddress">
+									<input type="text" id="txtPermAddress" placeholder="Enter Address" name="txtPermAddress" maxlength="120">
 								</div>
 							</div>
 							<div class="custgrp">
 								<label class="col-sm-2 control-label input-sm" for="textinput">
 									Landmark:</label>
 								<div class="col-sm-2">
-									<input type="text" id="txtPermLandmark" placeholder="Enter Landmark" name="txtPermLandmark"/>
+									<input type="text" id="txtPermLandmark" placeholder="Enter Landmark" name="txtPermLandmark" maxlength="120"/>
 								</div>
 							</div>
 							<div class="custgrp">
 								<label class="col-sm-2 control-label input-sm" for="textinput">
 									City:</label>
 								<div class="col-sm-2">
-									<input type="text" id="txtPermCity" placeholder="Enter City" name="txtPermCity"/>
+									<input type="text" id="txtPermCity" placeholder="Enter City" name="txtPermCity" maxlength="50"/>
 								</div>
 							</div>
 							<div class="custgrp">
@@ -276,7 +276,7 @@ if(isset($_REQUEST['txtPermAddress']) && ($_REQUEST['txtPermAddress']<>""))	{
 									Pincode:</label>
 								<div class="col-sm-3">
 									<input type="text" id="txtPermPostcode" placeholder="Post Code" class="form-control  input-sm"
-										 maxlength="20" name="txtPermPostcode">
+										 maxlength="6" name="txtPermPostcode">
 								</div>
 							</div>
 							<div class="custgrp">
@@ -306,21 +306,21 @@ if(isset($_REQUEST['txtPermAddress']) && ($_REQUEST['txtPermAddress']<>""))	{
 									<label class="col-sm-2 control-label input-sm" for="textinput">
 										Address:</label>
 									<div class="col-sm-3 has-success">
-										<input type="text" id="txtCorrAddress" placeholder="Enter Address" name="txtCorrAddress">
+										<input type="text" id="txtCorrAddress" placeholder="Enter Address" name="txtCorrAddress" maxlength="120">
 									</div>
 								</div>
 								<div class="custgrp">
 									<label class="col-sm-2 control-label input-sm" for="textinput">
 										Landmark:</label>
 									<div class="col-sm-2">
-										<input type="text" id="txtCorrLandmark" placeholder="Enter Landmark" name="txtCorrLandmark"/>
+										<input type="text" id="txtCorrLandmark" placeholder="Enter Landmark" name="txtCorrLandmark" maxlength="120">
 									</div>
 								</div>
 								<div class="custgrp">
 									<label class="col-sm-2 control-label input-sm" for="textinput">
 										City:</label>
 									<div class="col-sm-2">
-										<input type="text" id="txtCorrCity" placeholder="Enter City" name="txtCorrCity"/>
+										<input type="text" id="txtCorrCity" placeholder="Enter City" name="txtCorrCity" maxlength="50"/>
 									</div>
 								</div>
 								<div class="custgrp">
@@ -374,7 +374,7 @@ if(isset($_REQUEST['txtPermAddress']) && ($_REQUEST['txtPermAddress']<>""))	{
 										Pincode:</label>
 									<div class="col-sm-3">
 										<input type="text" id="txtCorrPostcode" placeholder="Post Code" class="form-control  input-sm"
-											maxlength="20" name="txtCorrPostcode">
+											maxlength="6" name="txtCorrPostcode">
 									</div>
 								</div>
 								<div class="custgrp">
