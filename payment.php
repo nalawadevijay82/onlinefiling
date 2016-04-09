@@ -114,7 +114,7 @@ $checksum_check = Checksum::verifyChecksum($recd_checksum, $all, $secret);
 							print_r($_REQUEST['responseDescription']); ?>
 
 							<?php
-							$query = "Insert into payment(recordId,orderId,responseCode,responseDescription,checksum,checksumVerified,paidFees) values('".$_SESSION['recordId']."','".$_REQUEST['orderId']."','".$_REQUEST['responseCode']."','".$_REQUEST['responseDescription']."','".$_REQUEST['checksum']."','".$checksum_check."',".$_SESSION['fees'].")";
+							$query = "Insert into payment(recordId,orderId,zaakpayOrderId,responseCode,responseDescription,checksum,checksumVerified,paidFees) values('".$_SESSION['recordId']."','IT".$_SESSION['recordId']."','".$_REQUEST['orderId']."','".$_REQUEST['responseCode']."','".$_REQUEST['responseDescription']."','".$_REQUEST['checksum']."','".$checksum_check."',".$_SESSION['fees'].")";
 							$insertRes = mysqli_query($con,$query);
 							
 							//echo "<br><br>Qry: ".$query;

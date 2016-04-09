@@ -58,10 +58,10 @@ if(!isset($_SESSION['recordId']) || $_SESSION['recordId']=="")	{
 				if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 					var obj = JSON.parse(xmlhttp.responseText);
 					document.getElementById("couponMsg").innerHTML = obj.msg;
-					if(obj.result == "Success")
-					{
+					//if(obj.result == "Success")
+					//{
 						document.getElementById("fees").innerHTML = obj.fees;
-					}
+					//}
 				}
 			};
 			xmlhttp.open("GET","coupon.php?q="+value+"&fees="+fees,true);
@@ -152,23 +152,16 @@ if(!isset($_SESSION['recordId']) || $_SESSION['recordId']=="")	{
 						$data=mysqli_fetch_array($res,MYSQLI_ASSOC);
 						$financialYear = $data['financialYear'];
 						
-						$currentDate = date("d-m-Y");
-						$currentFinYear = "01-04-".date("Y");
-						
-						if(strtotime($currentDate) > strtotime($currentFinYear))
-						{
-							$currentYear = true;
-						}
-						else
-						{
-							$currentYear = false;
-						}
-
 						$countQry = "SELECT * FROM `formdetails` where recordId = ".$_SESSION['recordId']." order by id DESC LIMIT 0,1";
 						$countRes = mysqli_query($con,$countQry);
 						$countData=mysqli_fetch_array($countRes,MYSQLI_ASSOC);
 						$formCount = $countData['formCount'];
 						
+						if($financialYear == "2014-15")
+							$currentYear = false;
+						else
+							$currentYear = true;
+							
 						$count = 0;
 						switch ($formCount)	{
 							case 1: 
@@ -211,6 +204,7 @@ if(!isset($_SESSION['recordId']) || $_SESSION['recordId']=="")	{
 						}
 
 						$chargesQry = "SELECT ".$count." FROM `filingcharges` where active=1";
+						echo "<br>Qry: ".$chargesQry;
 						$chargesRes = mysqli_query($con,$chargesQry);
 						$chargesData=mysqli_fetch_array($chargesRes,MYSQLI_ASSOC);
 						$charges = $chargesData[$count];

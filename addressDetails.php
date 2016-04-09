@@ -208,21 +208,21 @@ if(isset($_REQUEST['txtPermAddress']) && ($_REQUEST['txtPermAddress']<>""))	{
 								<label class="col-sm-2 control-label input-sm" for="textinput">
 									Address:</label>
 								<div class="col-sm-3 has-success">
-									<input type="text" id="txtPermAddress" placeholder="Enter Address" name="txtPermAddress" maxlength="120">
+									<input type="text" id="txtPermAddress" placeholder="Enter Address" name="txtPermAddress" maxlength="99">
 								</div>
 							</div>
 							<div class="custgrp">
 								<label class="col-sm-2 control-label input-sm" for="textinput">
 									Landmark:</label>
 								<div class="col-sm-2">
-									<input type="text" id="txtPermLandmark" placeholder="Enter Landmark" name="txtPermLandmark" maxlength="120"/>
+									<input type="text" id="txtPermLandmark" placeholder="Enter Landmark" name="txtPermLandmark" maxlength="99"/>
 								</div>
 							</div>
 							<div class="custgrp">
 								<label class="col-sm-2 control-label input-sm" for="textinput">
 									City:</label>
 								<div class="col-sm-2">
-									<input type="text" id="txtPermCity" placeholder="Enter City" name="txtPermCity" maxlength="50"/>
+									<input type="text" id="txtPermCity" placeholder="Enter City" name="txtPermCity" maxlength="29"/>
 								</div>
 							</div>
 							<div class="custgrp">

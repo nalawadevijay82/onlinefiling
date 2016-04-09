@@ -14,37 +14,62 @@ elseif($_SESSION['admin'] == "true" && (isset($_REQUEST['txtOneFilingCharge1']) 
 	mysqli_query($con,"update filingCharges set active = 0");
 	mysqli_query($con,"update coupons set active = 0");
 	
-	$query = "Insert into filingCharges(startDate,one1,two1,three1,four1,five1,six1,one2,two2,three2,four2,five2,six2,year1,year2,active) values('".$_REQUEST['txtFilingStartDate1']."','".$_REQUEST['txtOneFilingCharge1']."','".$_REQUEST['txtTwoFilingCharge1']."','".$_REQUEST['txtThreeFilingCharge1']."','".$_REQUEST['txtFourFilingCharge1']."','".$_REQUEST['txtFiveFilingCharge1']."','".$_REQUEST['txtSixFilingCharge1']."','".$_REQUEST['txtOneFilingCharge2']."','".$_REQUEST['txtTwoFilingCharge2']."','".$_REQUEST['txtThreeFilingCharge2']."','".$_REQUEST['txtFourFilingCharge2']."','".$_REQUEST['txtFiveFilingCharge2']."','".$_REQUEST['txtSixFilingCharge2']."','2015-16','2016-17','1')";
+	$query = "Insert into filingCharges(startDate,one1,two1,three1,four1,five1,six1,one2,two2,three2,four2,five2,six2,year1,year2,active) values('".$_REQUEST['txtFilingStartDate1']."','".$_REQUEST['txtOneFilingCharge1']."','".$_REQUEST['txtTwoFilingCharge1']."','".$_REQUEST['txtThreeFilingCharge1']."','".$_REQUEST['txtFourFilingCharge1']."','".$_REQUEST['txtFiveFilingCharge1']."','".$_REQUEST['txtSixFilingCharge1']."','".$_REQUEST['txtOneFilingCharge2']."','".$_REQUEST['txtTwoFilingCharge2']."','".$_REQUEST['txtThreeFilingCharge2']."','".$_REQUEST['txtFourFilingCharge2']."','".$_REQUEST['txtFiveFilingCharge2']."','".$_REQUEST['txtSixFilingCharge2']."','2014-15','2015-16','1')";
 	$insertRes = mysqli_query($con,$query);
 	//echo "<br>Qry: ".$query;
 
 	if(isset($_REQUEST['txtCouponCode1']) && ($_REQUEST['txtCouponCode1'] <>"" ))	{
-		$couponQuery = "Insert into coupons(couponCode,rate,startDate,endDate,active) values('".$_REQUEST['txtCouponCode1']."','".$_REQUEST['txtCoupon1Per']."','".$_REQUEST['datePickerC1StartDate']."','".$_REQUEST['datePickerC1EndDate']."','1')";
+		if(isset($_REQUEST['check1']) && ($_REQUEST['check1'] == "Yes"))
+			$appliedFor = "Two";
+		else
+			$appliedFor = "One";
+		
+		$couponQuery = "Insert into coupons(couponCode,appliedFor,rate,startDate,endDate,active) values('".$_REQUEST['txtCouponCode1']."','".$appliedFor."','".$_REQUEST['txtCoupon1Per']."','".$_REQUEST['datePickerC1StartDate']."','".$_REQUEST['datePickerC1EndDate']."','1')";
 		$insertRes = mysqli_query($con,$couponQuery);
 	}
 
 	if(isset($_REQUEST['txtCouponCode2']) && ($_REQUEST['txtCouponCode2'] <>"" ))	{
-		$couponQuery = "Insert into coupons(couponCode,rate,startDate,endDate,active) values('".$_REQUEST['txtCouponCode2']."','".$_REQUEST['txtCoupon2Per']."','".$_REQUEST['datePickerC2StartDate']."','".$_REQUEST['datePickerC2EndDate']."','1')";
+		if(isset($_REQUEST['check2']) && ($_REQUEST['check2'] == "Yes"))
+			$appliedFor = "Two";
+		else
+			$appliedFor = "One";
+		$couponQuery = "Insert into coupons(couponCode,appliedFor,rate,startDate,endDate,active) values('".$_REQUEST['txtCouponCode2']."','".$appliedFor."','".$_REQUEST['txtCoupon2Per']."','".$_REQUEST['datePickerC2StartDate']."','".$_REQUEST['datePickerC2EndDate']."','1')";
 		$insertRes = mysqli_query($con,$couponQuery);
 	}
 
 	if(isset($_REQUEST['txtCouponCode3']) && ($_REQUEST['txtCouponCode3'] <>"" ))	{
-		$couponQuery = "Insert into coupons(couponCode,rate,startDate,endDate,active) values('".$_REQUEST['txtCouponCode3']."','".$_REQUEST['txtCoupon3Per']."','".$_REQUEST['datePickerC3StartDate']."','".$_REQUEST['datePickerC3EndDate']."','1')";
+		if(isset($_REQUEST['check3']) && ($_REQUEST['check3'] == "Yes"))
+			$appliedFor = "Two";
+		else
+			$appliedFor = "One";
+		$couponQuery = "Insert into coupons(couponCode,appliedFor,rate,startDate,endDate,active) values('".$_REQUEST['txtCouponCode3']."','".$appliedFor."','".$_REQUEST['txtCoupon3Per']."','".$_REQUEST['datePickerC3StartDate']."','".$_REQUEST['datePickerC3EndDate']."','1')";
 		$insertRes = mysqli_query($con,$couponQuery);
 	}
 
 	if(isset($_REQUEST['txtCouponCode4']) && ($_REQUEST['txtCouponCode4'] <>"" ))	{
-		$couponQuery = "Insert into coupons(couponCode,rate,startDate,endDate,active) values('".$_REQUEST['txtCouponCode4']."','".$_REQUEST['txtCoupon4Per']."','".$_REQUEST['datePickerC4StartDate']."','".$_REQUEST['datePickerC4EndDate']."','1')";
+		if(isset($_REQUEST['check4']) && ($_REQUEST['check4'] == "Yes"))
+			$appliedFor = "Two";
+		else
+			$appliedFor = "One";
+		$couponQuery = "Insert into coupons(couponCode,appliedFor,rate,startDate,endDate,active) values('".$_REQUEST['txtCouponCode4']."','".$appliedFor."','".$_REQUEST['txtCoupon4Per']."','".$_REQUEST['datePickerC4StartDate']."','".$_REQUEST['datePickerC4EndDate']."','1')";
 		$insertRes = mysqli_query($con,$couponQuery);
 	}
 
 	if(isset($_REQUEST['txtCouponCode5']) && ($_REQUEST['txtCouponCode5'] <>"" ))	{
-		$couponQuery = "Insert into coupons(couponCode,rate,startDate,endDate,active) values('".$_REQUEST['txtCouponCode5']."','".$_REQUEST['txtCoupon5Per']."','".$_REQUEST['datePickerC5StartDate']."','".$_REQUEST['datePickerC5EndDate']."','1')";
+		if(isset($_REQUEST['check5']) && ($_REQUEST['check5'] == "Yes"))
+			$appliedFor = "Two";
+		else
+			$appliedFor = "One";
+		$couponQuery = "Insert into coupons(couponCode,appliedFor,rate,startDate,endDate,active) values('".$_REQUEST['txtCouponCode5']."','".$appliedFor."','".$_REQUEST['txtCoupon5Per']."','".$_REQUEST['datePickerC5StartDate']."','".$_REQUEST['datePickerC5EndDate']."','1')";
 		$insertRes = mysqli_query($con,$couponQuery);
 	}
 
 	if(isset($_REQUEST['txtCouponCode6']) && ($_REQUEST['txtCouponCode6'] <>"" ))	{
-		$couponQuery = "Insert into coupons(couponCode,rate,startDate,endDate,active) values('".$_REQUEST['txtCouponCode6']."','".$_REQUEST['txtCoupon6Per']."','".$_REQUEST['datePickerC6StartDate']."','".$_REQUEST['datePickerC6EndDate']."','1')";
+		if(isset($_REQUEST['check6']) && ($_REQUEST['check6'] == "Yes"))
+			$appliedFor = "Two";
+		else
+			$appliedFor = "One";
+		$couponQuery = "Insert into coupons(couponCode,appliedFor,rate,startDate,endDate,active) values('".$_REQUEST['txtCouponCode6']."','".$appliedFor."','".$_REQUEST['txtCoupon6Per']."','".$_REQUEST['datePickerC6StartDate']."','".$_REQUEST['datePickerC6EndDate']."','1')";
 		$insertRes = mysqli_query($con,$couponQuery);
 	}
 
@@ -332,6 +357,7 @@ elseif($_SESSION['admin'] == "true" && (isset($_REQUEST['txtOneFilingCharge1']) 
 				  $four2 = $chargesData['four2'];
 				  $five2 = $chargesData['five2'];
 				  $six2 = $chargesData['six2'];
+				  
 
 				  //Coupon query
 				  $coupon = array();
@@ -351,6 +377,7 @@ elseif($_SESSION['admin'] == "true" && (isset($_REQUEST['txtOneFilingCharge1']) 
 					  $coupon["codePer".$i] = $couponData['rate'];
 					  $coupon["codeStartDate".$i] = $couponData['startDate'];
 					  $coupon["codeEndDate".$i] = $couponData['endDate'];
+					  $coupon["appliedFor".$i] = $couponData['appliedFor'];
 					  $i++;
 				  }
 				  ?>
@@ -358,7 +385,7 @@ elseif($_SESSION['admin'] == "true" && (isset($_REQUEST['txtOneFilingCharge1']) 
 					<p>
 						<div class="form-group">
 							<div style="float:left;">
-								<div><label class="col-sm-2 control-label input-sm" for="textinput">Filing Charges for - 2015-16</label></div>
+								<div><label class="col-sm-2 control-label input-sm" for="textinput">Filing Charges for - 2014-15</label></div>
 								<div class="custgrp">
 									<label class="col-sm-2 control-label input-sm" for="textinput">
 										Start Date:</label>
@@ -388,7 +415,7 @@ elseif($_SESSION['admin'] == "true" && (isset($_REQUEST['txtOneFilingCharge1']) 
 									</div>
 								</div>
 								<p>&nbsp;</p>
-								<div><label class="col-sm-2 control-label input-sm" for="textinput">Filing Charges for - 2016-17</label></div>
+								<div><label class="col-sm-2 control-label input-sm" for="textinput">Filing Charges for - 2015-16</label></div>
 								<div class="custgrp">
 									<label class="col-sm-2 control-label input-sm" for="textinput">
 										Start Date:</label>
@@ -419,96 +446,126 @@ elseif($_SESSION['admin'] == "true" && (isset($_REQUEST['txtOneFilingCharge1']) 
 								</div>
 
 								<p>&nbsp;</p>
-								<div><label class="col-sm-2 control-label input-sm" for="textinput">Discount Codes - </label></div>
-
+								<div><label class="col-sm-2 control-label input-sm" for="textinput">Discount Codes - </label><p>Check the checkbox if you want to apply discount for both the financial years.<br><br></p></div>
+								
+								<label class="col-sm-2 control-label input-sm" for="textinput">
+								<?php	if(isset($coupon["appliedFor1"]) && ($coupon["appliedFor1"] == "Two"))
+											$checked = 'Checked="Checked"';
+										else
+											$checked = "";
+								?>
 								<div class="custgrp">
-									<label class="col-sm-2 control-label input-sm" for="textinput">
-										Coupon Code 1:</label>
+									Discount Code 1:</label>&nbsp;&nbsp;<input type="checkbox" name="check1" id="check1" value="Yes" <?=$checked?>>
 									<div class="col-sm-3">
-										<input type="text" id="txtCouponCode1" placeholder="Enter Coupon Code 1" class="form-control input-sm" 
+										<input type="text" id="txtCouponCode1" placeholder="Enter Discount Code 1" class="form-control input-sm" 
 										name="txtCouponCode1" value="<?=$coupon['code1']?>">
 									</div>
 								</div>
 								<div class="custgrp">
 									<label class="col-sm-2 control-label input-sm" for="textinput">
-										Coupon Code 1 - Start Date:</label>
+										Discount Code 1 - Start Date:</label>
 									<div class="col-sm-3">
-										<input type="text" id="datePickerC1StartDate" placeholder="Enter Coupon Code 1 Start Date" class="form-control input-sm" name="datePickerC1StartDate" value="<?=$coupon['codeStartDate1']?>">
+										<input type="text" id="datePickerC1StartDate" placeholder="Enter Discount Code 1 Start Date" class="form-control input-sm" name="datePickerC1StartDate" value="<?=$coupon['codeStartDate1']?>">
 									</div>
 								</div>
+								<?php	if(isset($coupon["appliedFor2"]) && ($coupon["appliedFor2"] == "Two"))
+											$checked = 'Checked="Checked"';
+										else
+											$checked = "";
+								?>
 								<div class="custgrp">
 									<label class="col-sm-2 control-label input-sm" for="textinput">
-										Coupon Code 2:</label>
+									Discount Code 2:</label>&nbsp;&nbsp;<input type="checkbox" name="check2" id="check2" value="Yes" <?=$checked?>>
 									<div class="col-sm-3">
-										<input type="text" id="txtCouponCode2" placeholder="Enter Coupon Code 2" class="form-control input-sm" 
+										<input type="text" id="txtCouponCode2" placeholder="Enter Discount Code 2" class="form-control input-sm" 
 										name="txtCouponCode2" value="<?=$coupon['code2']?>">
 									</div>
 								</div>
 								<div class="custgrp">
 									<label class="col-sm-2 control-label input-sm" for="textinput">
-										Coupon Code 2 - Start Date:</label>
+										Discount Code 2 - Start Date:</label>
 									<div class="col-sm-3">
-										<input type="text" id="datePickerC2StartDate" placeholder="Enter Coupon Code 2 Start Date" class="form-control input-sm" name="datePickerC2StartDate" value="<?=$coupon['codeStartDate2']?>">
+										<input type="text" id="datePickerC2StartDate" placeholder="Enter Discount Code 2 Start Date" class="form-control input-sm" name="datePickerC2StartDate" value="<?=$coupon['codeStartDate2']?>">
 									</div>
 								</div>
+								<?php	if(isset($coupon["appliedFor3"]) && ($coupon["appliedFor3"] == "Two"))
+											$checked = 'Checked="Checked"';
+										else
+											$checked = "";
+								?>
 								<div class="custgrp">
 									<label class="col-sm-2 control-label input-sm" for="textinput">
-										Coupon Code 3:</label>
+									Discount Code 3:</label>&nbsp;&nbsp;<input type="checkbox" name="check3" id="check3" value="Yes" <?=$checked?>>
 									<div class="col-sm-3">
-										<input type="text" id="txtCouponCode3" placeholder="Enter Coupon Code 3" class="form-control input-sm" 
+										<input type="text" id="txtCouponCode3" placeholder="Enter Discount Code 3" class="form-control input-sm" 
 										name="txtCouponCode3" value="<?=$coupon['code3']?>">
 									</div>
 								</div>
 								<div class="custgrp">
 									<label class="col-sm-2 control-label input-sm" for="textinput">
-										Coupon Code 3 - Start Date:</label>
+										Discount Code 3 - Start Date:</label>
 									<div class="col-sm-3">
-										<input type="text" id="datePickerC3StartDate" placeholder="Enter Coupon Code 3 Start Date" class="form-control input-sm" name="datePickerC3StartDate" value="<?=$coupon['codeStartDate3']?>">
+										<input type="text" id="datePickerC3StartDate" placeholder="Enter Discount Code 3 Start Date" class="form-control input-sm" name="datePickerC3StartDate" value="<?=$coupon['codeStartDate3']?>">
 									</div>
 								</div>
+								<?php	if(isset($coupon["appliedFor4"]) && ($coupon["appliedFor4"] == "Two"))
+											$checked = 'Checked="Checked"';
+										else
+											$checked = "";
+								?>
 								<div class="custgrp">
 									<label class="col-sm-2 control-label input-sm" for="textinput">
-										Coupon Code 4:</label>
+									Discount Code 4:</label>&nbsp;&nbsp;<input type="checkbox" name="check4" id="check4" value="Yes" <?=$checked?>>
 									<div class="col-sm-3">
-										<input type="text" id="txtCouponCode4" placeholder="Enter Coupon Code 4" class="form-control input-sm" 
+										<input type="text" id="txtCouponCode4" placeholder="Enter Discount Code 4" class="form-control input-sm" 
 										name="txtCouponCode4" value="<?=$coupon['code4']?>">
 									</div>
 								</div>
 								<div class="custgrp">
 									<label class="col-sm-2 control-label input-sm" for="textinput">
-										Coupon Code 4 - Start Date:</label>
+										Discount Code 4 - Start Date:</label>
 									<div class="col-sm-3">
-										<input type="text" id="datePickerC4StartDate" placeholder="Enter Coupon Code 4 Start Date" class="form-control input-sm" name="datePickerC4StartDate" value="<?=$coupon['codeStartDate4']?>">
+										<input type="text" id="datePickerC4StartDate" placeholder="Enter Discount Code 4 Start Date" class="form-control input-sm" name="datePickerC4StartDate" value="<?=$coupon['codeStartDate4']?>">
 									</div>
 								</div>
+								<?php	if(isset($coupon["appliedFor5"]) && ($coupon["appliedFor5"] == "Two"))
+											$checked = 'Checked="Checked"';
+										else
+											$checked = "";
+								?>
 								<div class="custgrp">
 									<label class="col-sm-2 control-label input-sm" for="textinput">
-										Coupon Code 5:</label>
+									Discount Code 5:</label>&nbsp;&nbsp;<input type="checkbox" name="check5" id="check5" value="Yes" <?=$checked?>>
 									<div class="col-sm-3">
-										<input type="text" id="txtCouponCode5" placeholder="Enter Coupon Code 5" class="form-control input-sm" 
+										<input type="text" id="txtCouponCode5" placeholder="Enter Discount Code 5" class="form-control input-sm" 
 										name="txtCouponCode5" value="<?=$coupon['code5']?>">
 									</div>
 								</div>
 								<div class="custgrp">
 									<label class="col-sm-2 control-label input-sm" for="textinput">
-										Coupon Code 5 - Start Date:</label>
+										Discount Code 5 - Start Date:</label>
 									<div class="col-sm-3">
-										<input type="text" id="datePickerC5StartDate" placeholder="Enter Coupon Code 5 Start Date" class="form-control input-sm" name="datePickerC5StartDate" value="<?=$coupon['codeStartDate5']?>">
+										<input type="text" id="datePickerC5StartDate" placeholder="Enter Discount Code 5 Start Date" class="form-control input-sm" name="datePickerC5StartDate" value="<?=$coupon['codeStartDate5']?>">
 									</div>
 								</div>
+								<?php	if(isset($coupon["appliedFor6"]) && ($coupon["appliedFor6"] == "Two"))
+											$checked = 'Checked="Checked"';
+										else
+											$checked = "";
+								?>
 								<div class="custgrp">
 									<label class="col-sm-2 control-label input-sm" for="textinput">
-										Coupon Code 6:</label>
+									Discount Code 6:</label>&nbsp;&nbsp;<input type="checkbox" name="check6" id="check6" value="Yes" <?=$checked?>>
 									<div class="col-sm-3">
-										<input type="text" id="txtCouponCode6" placeholder="Enter Coupon Code 6" class="form-control input-sm" 
+										<input type="text" id="txtCouponCode6" placeholder="Enter Discount Code 6" class="form-control input-sm" 
 										name="txtCouponCode6" value="<?=$coupon['code6']?>">
 									</div>
 								</div>
 								<div class="custgrp">
 									<label class="col-sm-2 control-label input-sm" for="textinput">
-										Coupon Code 6 - Start Date:</label>
+										Discount Code 6 - Start Date:</label>
 									<div class="col-sm-3">
-										<input type="text" id="datePickerC6StartDate" placeholder="Enter Coupon Code 6 Start Date" class="form-control input-sm" name="datePickerC6StartDate" value="<?=$coupon['codeStartDate6']?>">
+										<input type="text" id="datePickerC6StartDate" placeholder="Enter Discount Code 6 Start Date" class="form-control input-sm" name="datePickerC6StartDate" value="<?=$coupon['codeStartDate6']?>">
 									</div>
 								</div>
 							</div>
@@ -568,89 +625,90 @@ elseif($_SESSION['admin'] == "true" && (isset($_REQUEST['txtOneFilingCharge1']) 
 								</div>
 
 								<p>&nbsp;</p>
-								<div>&nbsp;</div>
+								<p>&nbsp;</p>
+								<div>&nbsp;</div><br>
 								<div class="custgrp">
 									<label class="col-sm-2 control-label input-sm" for="textinput">
-										Coupon Code 1 - Percentage:</label>
+										Discount Code 1 - Percentage:</label>
 									<div class="col-sm-3">
-										<input type="text" id="txtCoupon1Per" placeholder="Enter Coupon Code 1 Percentage" class="form-control input-sm" maxlength="15" name="txtCoupon1Per" value="<?=$coupon['codePer1']?>">
+										<input type="text" id="txtCoupon1Per" placeholder="Enter Discount Code 1 Percentage" class="form-control input-sm" maxlength="15" name="txtCoupon1Per" value="<?=$coupon['codePer1']?>">
 									</div>
 								</div>
 								<div class="custgrp">
 									<label class="col-sm-2 control-label input-sm" for="textinput">
-										Coupon Code 1 - End Date:</label>
+										Discount Code 1 - End Date:</label>
 									<div class="col-sm-3">
-										<input type="text" id="datePickerC1EndDate" placeholder="Enter Coupon Code 1 End Date" class="form-control input-sm" name="datePickerC1EndDate" value="<?=$coupon['codeEndDate1']?>">
+										<input type="text" id="datePickerC1EndDate" placeholder="Enter Discount Code 1 End Date" class="form-control input-sm" name="datePickerC1EndDate" value="<?=$coupon['codeEndDate1']?>">
 									</div>
 								</div>
 								<div class="custgrp">
 									<label class="col-sm-2 control-label input-sm" for="textinput">
-										Coupon Code 2 - Percentage:</label>
+										Discount Code 2 - Percentage:</label>
 									<div class="col-sm-3">
-										<input type="text" id="txtCoupon2Per" placeholder="Enter Coupon Code 2 Percentage" class="form-control input-sm" maxlength="15" name="txtCoupon2Per" value="<?=$coupon['codePer2']?>">
+										<input type="text" id="txtCoupon2Per" placeholder="Enter Discount Code 2 Percentage" class="form-control input-sm" maxlength="15" name="txtCoupon2Per" value="<?=$coupon['codePer2']?>">
 									</div>
 								</div>
 								<div class="custgrp">
 									<label class="col-sm-2 control-label input-sm" for="textinput">
-										Coupon Code 2 - End Date:</label>
+										Discount Code 2 - End Date:</label>
 									<div class="col-sm-3">
-										<input type="text" id="datePickerC2EndDate" placeholder="Enter Coupon Code 2 End Date" class="form-control input-sm" name="datePickerC2EndDate" value="<?=$coupon['codeEndDate2']?>">
+										<input type="text" id="datePickerC2EndDate" placeholder="Enter Discount Code 2 End Date" class="form-control input-sm" name="datePickerC2EndDate" value="<?=$coupon['codeEndDate2']?>">
 									</div>
 								</div>
 								<div class="custgrp">
 									<label class="col-sm-2 control-label input-sm" for="textinput">
-										Coupon Code 3 - Percentage:</label>
+										Discount Code 3 - Percentage:</label>
 									<div class="col-sm-3">
-										<input type="text" id="txtCoupon3Per" placeholder="Enter Coupon Code 3 Percentage" class="form-control input-sm" maxlength="15" name="txtCoupon3Per" value="<?=$coupon['codePer3']?>">
+										<input type="text" id="txtCoupon3Per" placeholder="Enter Discount Code 3 Percentage" class="form-control input-sm" maxlength="15" name="txtCoupon3Per" value="<?=$coupon['codePer3']?>">
 									</div>
 								</div>
 								<div class="custgrp">
 									<label class="col-sm-2 control-label input-sm" for="textinput">
-										Coupon Code 3 - End Date:</label>
+										Discount Code 3 - End Date:</label>
 									<div class="col-sm-3">
-										<input type="text" id="datePickerC3EndDate" placeholder="Enter Coupon Code 3 End Date" class="form-control input-sm" name="datePickerC3EndDate" value="<?=$coupon['codeEndDate3']?>">
+										<input type="text" id="datePickerC3EndDate" placeholder="Enter Discount Code 3 End Date" class="form-control input-sm" name="datePickerC3EndDate" value="<?=$coupon['codeEndDate3']?>">
 									</div>
 								</div>
 								<div class="custgrp">
 									<label class="col-sm-2 control-label input-sm" for="textinput">
-										Coupon Code 4 - Percentage:</label>
+										Discount Code 4 - Percentage:</label>
 									<div class="col-sm-3">
-										<input type="text" id="txtCoupon4Per" placeholder="Enter Coupon Code 4 Percentage" class="form-control input-sm" maxlength="15" name="txtCoupon4Per" value="<?=$coupon['codePer4']?>">
+										<input type="text" id="txtCoupon4Per" placeholder="Enter Discount Code 4 Percentage" class="form-control input-sm" maxlength="15" name="txtCoupon4Per" value="<?=$coupon['codePer4']?>">
 									</div>
 								</div>
 								<div class="custgrp">
 									<label class="col-sm-2 control-label input-sm" for="textinput">
-										Coupon Code 4 - End Date:</label>
+										Discount Code 4 - End Date:</label>
 									<div class="col-sm-3">
-										<input type="text" id="datePickerC4EndDate" placeholder="Enter Coupon Code 4 End Date" class="form-control input-sm" name="datePickerC4EndDate" value="<?=$coupon['codeEndDate4']?>">
+										<input type="text" id="datePickerC4EndDate" placeholder="Enter Discount Code 4 End Date" class="form-control input-sm" name="datePickerC4EndDate" value="<?=$coupon['codeEndDate4']?>">
 									</div>
 								</div>
 								<div class="custgrp">
 									<label class="col-sm-2 control-label input-sm" for="textinput">
-										Coupon Code 5 - Percentage:</label>
+										Discount Code 5 - Percentage:</label>
 									<div class="col-sm-3">
-										<input type="text" id="txtCoupon5Per" placeholder="Enter Coupon Code 5 Percentage" class="form-control input-sm" maxlength="15" name="txtCoupon5Per" value="<?=$coupon['codePer5']?>">
+										<input type="text" id="txtCoupon5Per" placeholder="Enter Discount Code 5 Percentage" class="form-control input-sm" maxlength="15" name="txtCoupon5Per" value="<?=$coupon['codePer5']?>">
 									</div>
 								</div>
 								<div class="custgrp">
 									<label class="col-sm-2 control-label input-sm" for="textinput">
-										Coupon Code 5 - End Date:</label>
+										Discount Code 5 - End Date:</label>
 									<div class="col-sm-3">
-										<input type="text" id="datePickerC5EndDate" placeholder="Enter Coupon Code 5 End Date" class="form-control input-sm" name="datePickerC5EndDate" value="<?=$coupon['codeEndDate5']?>">
+										<input type="text" id="datePickerC5EndDate" placeholder="Enter Discount Code 5 End Date" class="form-control input-sm" name="datePickerC5EndDate" value="<?=$coupon['codeEndDate5']?>">
 									</div>
 								</div>
 								<div class="custgrp">
 									<label class="col-sm-2 control-label input-sm" for="textinput">
-										Coupon Code 6 - Percentage:</label>
+										Discount Code 6 - Percentage:</label>
 									<div class="col-sm-3">
-										<input type="text" id="txtCoupon6Per" placeholder="Enter Coupon Code 6 Percentage" class="form-control input-sm" maxlength="15" name="txtCoupon6Per" value="<?=$coupon['codePer6']?>">
+										<input type="text" id="txtCoupon6Per" placeholder="Enter Discount Code 6 Percentage" class="form-control input-sm" maxlength="15" name="txtCoupon6Per" value="<?=$coupon['codePer6']?>">
 									</div>
 								</div>
 								<div class="custgrp">
 									<label class="col-sm-2 control-label input-sm" for="textinput">
-										Coupon Code 6 - End Date:</label>
+										Discount Code 6 - End Date:</label>
 									<div class="col-sm-3">
-										<input type="text" id="datePickerC6EndDate" placeholder="Enter Coupon Code 6 End Date" class="form-control input-sm" name="datePickerC6EndDate" value="<?=$coupon['codeEndDate6']?>">
+										<input type="text" id="datePickerC6EndDate" placeholder="Enter Discount Code 6 End Date" class="form-control input-sm" name="datePickerC6EndDate" value="<?=$coupon['codeEndDate6']?>">
 									</div>
 								</div>
 

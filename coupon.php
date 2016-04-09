@@ -20,24 +20,45 @@ $rows = mysqli_num_rows($result);
 if($rows==0)
 {
 	$arr['result'] = "Error";
+	$arr['fees'] = $fees;
+	$_SESSION['fees'] = $fees;
 	$arr['msg'] = "Coupon Code is not valid or expired";
 	echo json_encode($arr);
 	exit;
 }
+
+$checkFilingQry="SELECT financialYear FROM formdetails where recordId = ".$_SESSION['recordId'];
+$filingResult = mysqli_query($con,$checkFilingQry);
+$filingData = mysqli_fetch_array($filingResult);
+$financialYear = $filingData['financialYear'];
+
 $row = mysqli_fetch_array($result);
 $rate = $row['rate'];
+$appliedFor = $row['appliedFor'];
 
-$discount = ($fees*$rate)/100;
-$revisedFees = $fees - $discount;
+if(($financialYear == "2015-16") || ($financialYear == "2014-15" && $appliedFor == "Two"))
+{
+	$discount = ($fees*$rate)/100;
+	$revisedFees = $fees - $discount;
 
-$_SESSION['fees'] = $revisedFees;
+	$_SESSION['fees'] = $revisedFees;
 
-$arr['result'] = "Success";
-$arr['msg'] = "Coupon Code is applied";
-$arr['rate'] = $rate;
-$arr['fees'] = $revisedFees;
-echo json_encode($arr);
-exit;
+	$arr['result'] = "Success";
+	$arr['msg'] = "Coupon Code is applied";
+	$arr['rate'] = $rate;
+	$arr['fees'] = $revisedFees;
+	echo json_encode($arr);
+	exit;
+}
+else
+{
+	$arr['result'] = "Error";
+	$arr['fees'] = $fees;
+	$_SESSION['fees'] = $fees;
+	$arr['msg'] = "Coupon Code is not valid or expired";
+	echo json_encode($arr);
+	exit;	
+}
 ?>
 </body>
 </html>

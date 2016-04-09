@@ -114,9 +114,10 @@ $pincode = $data['permPincode'];
 	<td width="50%" align="right" valign="middle">Zppayoption</td>
 	<td width="50%" align="center" valign="middle"><input type="text" name="zpPayOption" value="1" /></td>
 </tr>
+<!-- Keep it 1 for production-->
 <tr>
 	<td width="50%" align="right" valign="middle">Mode</td>
-	<td width="50%" align="center" valign="middle"><input type="text" name="mode" value="1" /> </td>
+	<td width="50%" align="center" valign="middle"><input type="text" name="mode" value="0" /> </td>
 </tr>
 <tr>
 	<td width="50%" align="right" valign="middle">Currency</td>
@@ -231,7 +232,7 @@ $pincode = $data['permPincode'];
 </div>
 </div>
 
-<script>submitForm();</script>
+<script>//submitForm();</script>
 		
 </body>
 </html>
