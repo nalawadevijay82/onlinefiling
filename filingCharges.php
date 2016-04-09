@@ -717,9 +717,9 @@ elseif($_SESSION['admin'] == "true" && (isset($_REQUEST['txtOneFilingCharge1']) 
 					</p>
 				</div>
 				<p>
-					<div align="center">
-						<button class="left waves-effect btn-flat brand-text submit-btn" type="Submit" name="Submit" value="Submit">Submit</button>
-						<button class="left waves-effect btn-flat brand-text submit-btn" type="Reset">Reset</button>
+					<div align="center" style="margin-left:25px">
+						<button class="left waves-effect btn-flat brand-text submit-btn" type="Submit" name="Submit" value="Submit">Next</button>
+						<button class="left waves-effect btn-flat brand-text submit-btn" type="Reset" style="margin-left:5px">Reset</button>
 					</div>
 				</p>
 				</div>

@@ -1,8 +1,8 @@
 <?php
 require_once("connection.php");
-print_r($_REQUEST);
+//print_r($_REQUEST);
 session_start();
-print_r($_SESSION);
+//print_r($_SESSION);
 
 if(!isset($_SESSION['recordId']) || $_SESSION['recordId']=="")	{
 	echo "<script>window.location='personalInformation.php';</script>";
@@ -204,7 +204,7 @@ if(!isset($_SESSION['recordId']) || $_SESSION['recordId']=="")	{
 						}
 
 						$chargesQry = "SELECT ".$count." FROM `filingcharges` where active=1";
-						echo "<br>Qry: ".$chargesQry;
+						//echo "<br>Qry: ".$chargesQry;
 						$chargesRes = mysqli_query($con,$chargesQry);
 						$chargesData=mysqli_fetch_array($chargesRes,MYSQLI_ASSOC);
 						$charges = $chargesData[$count];

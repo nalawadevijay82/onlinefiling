@@ -121,7 +121,7 @@ if(isset($_FILES['file1']['name']) && ($_FILES['file1']['name']<>""))	{
       <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
       <title>Online IT Filing : Upload Income Details / Proofs</title>
 
-	  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+	  <script src="js/jquery-1.9.1.js"></script>
        <!-- CSS  -->      
       <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
       <!-- Font Awesome -->
@@ -372,9 +372,9 @@ if(isset($_FILES['file1']['name']) && ($_FILES['file1']['name']<>""))	{
 								<input type="text" ID="txtFile6" name="txtFile6" placeholder="Password if any" class="form-control input-sm" MaxLength="50" style="width:150px">
 							</div>
 					   </p>
-						<div>
-							<button class="left waves-effect btn-flat brand-text submit-btn" type="Submit">Next</button>
-							<button class="left waves-effect btn-flat brand-text submit-btn" type="Reset">Reset</button>
+						<div align="center" style="margin-left:25px">
+							<button class="left waves-effect btn-flat brand-text submit-btn" type="Submit" name="Submit" value="Submit">Next</button>
+							<button class="left waves-effect btn-flat brand-text submit-btn" type="Reset" style="margin-left:5px">Reset</button>
 						</div>
 					</p>
 				</form>
@@ -404,7 +404,7 @@ if(isset($_FILES['file1']['name']) && ($_FILES['file1']['name']<>""))	{
         </main>
       </div>
       <!-- jQuery Library -->
-      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+      <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
       <!-- Materialize js -->
       <script type="text/javascript" src="js/materialize.min.js"></script>
       <!-- Skill Progress Bar -->
@@ -413,7 +413,7 @@ if(isset($_FILES['file1']['name']) && ($_FILES['file1']['name']<>""))	{
       <!-- Owl slider -->      
       <script src="js/owl.carousel.min.js"></script>    
       <!-- Mixit slider  -->
-      <script src="http://cdn.jsdelivr.net/jquery.mixitup/latest/jquery.mixitup.min.js"></script>
+      <script src="js/jquery.mixitup.min.js"></script>
       <!-- counter -->
       <script src="js/waypoints.min.js"></script>
       <script src="js/jquery.counterup.min.js"></script>     

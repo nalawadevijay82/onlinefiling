@@ -1,6 +1,6 @@
 <?php
 require_once("connection.php");
-print_r($_REQUEST);
+//print_r($_REQUEST);
 session_start();
 $_SESSION['admin'] = "";
 
@@ -27,7 +27,7 @@ if(isset($_REQUEST['login']) && ($_REQUEST['login'] == "login"))
       <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
       <title>Online IT Filing : Admin Panel</title>
 
-	  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+	  <script src="js/jquery-1.9.1.js"></script>
 	  <!-- CSS  -->      
       <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
       <!-- Font Awesome -->
@@ -41,8 +41,8 @@ if(isset($_REQUEST['login']) && ($_REQUEST['login'] == "login"))
       <!-- Main css File -->
       <link href="style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 	  <!-- For datePicker	-->
-	  <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-	  <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
+	  <link rel="stylesheet" href="css/jquery-ui.css">
+	  <script src="js/jquery-ui.js"></script>
 
       <!-- Extra css & JS File -->
       <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
@@ -128,9 +128,9 @@ if(isset($_REQUEST['login']) && ($_REQUEST['login'] == "login"))
 							</div>
 						</p>
 						<p>
-							<div>
-								<button class="left waves-effect btn-flat brand-text submit-btn" name="login" value="login" type="Submit">Login</button>
-								<button class="left waves-effect btn-flat brand-text submit-btn" type="Reset">Reset</button>
+							<div align="center" style="margin-left:25px">
+								<button class="left waves-effect btn-flat brand-text submit-btn" type="Submit" name="Submit" value="Submit">Next</button>
+								<button class="left waves-effect btn-flat brand-text submit-btn" type="Reset" style="margin-left:5px">Reset</button>
 							</div>
 						</p>
 					</form>
@@ -159,7 +159,7 @@ if(isset($_REQUEST['login']) && ($_REQUEST['login'] == "login"))
         </main>
       </div>
       <!-- jQuery Library -->
-      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+      <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
       <!-- Materialize js -->
       <script type="text/javascript" src="js/materialize.min.js"></script>
       <!-- Skill Progress Bar -->
@@ -168,7 +168,7 @@ if(isset($_REQUEST['login']) && ($_REQUEST['login'] == "login"))
       <!-- Owl slider -->      
       <script src="js/owl.carousel.min.js"></script>    
       <!-- Mixit slider  -->
-      <script src="http://cdn.jsdelivr.net/jquery.mixitup/latest/jquery.mixitup.min.js"></script>
+      <script src="js/jquery.mixitup.min.js"></script>
       <!-- counter -->
       <script src="js/waypoints.min.js"></script>
       <script src="js/jquery.counterup.min.js"></script>     

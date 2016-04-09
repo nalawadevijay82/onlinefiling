@@ -1,6 +1,6 @@
 <?php
 require_once("connection.php");
-print_r($_REQUEST);
+//print_r($_REQUEST);
 session_start();
 
 if(!isset($_SESSION['recordId']) || $_SESSION['recordId']=="")	{
@@ -8,7 +8,7 @@ if(!isset($_SESSION['recordId']) || $_SESSION['recordId']=="")	{
 }
 
 if(isset($_REQUEST['txtPermAddress']) && ($_REQUEST['txtPermAddress']<>""))	{
-	echo "In submit";
+	//echo "In submit";
 
 	$query = "Insert into addressDetails(permAdd,permLandmark,permCity,permState,permPincode,permCountry,corrAdd,corrLandmark,corrCity,corrState,corrPincode,corrCountry,recordId) values('".$_REQUEST['txtPermAddress']."','".$_REQUEST['txtPermLandmark']."','".$_REQUEST['txtPermCity']."','".$_REQUEST['selPermState']."','".$_REQUEST['txtPermPostcode']."','India','".$_REQUEST['txtCorrAddress']."','".$_REQUEST['txtCorrLandmark']."','".$_REQUEST['txtCorrCity']."','".$_REQUEST['selCorrState']."','".$_REQUEST['txtCorrPostcode']."','India',".$_SESSION['recordId'].")";
 	$insertRes = mysqli_query($con,$query);
@@ -30,7 +30,7 @@ if(isset($_REQUEST['txtPermAddress']) && ($_REQUEST['txtPermAddress']<>""))	{
       <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
       <title>Online IT Filing : Upload Income Details / Proofs</title>
 
-	  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+	  <script src="js/jquery-1.9.1.js"></script>
       <!-- CSS  -->      
       <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
       <!-- Font Awesome -->
@@ -393,10 +393,10 @@ if(isset($_REQUEST['txtPermAddress']) && ($_REQUEST['txtPermAddress']<>""))	{
 
 				</div>
 			  </div> 	
-						<div>
-							<button class="left waves-effect btn-flat brand-text submit-btn" type="Submit" name="submitForm">Next</button>
-							<button class="left waves-effect btn-flat brand-text submit-btn" type="Reset">Reset</button>
-						</div>
+					<div align="center" style="margin-left:25px">
+						<button class="left waves-effect btn-flat brand-text submit-btn" type="Submit" name="Submit" value="Submit">Next</button>
+						<button class="left waves-effect btn-flat brand-text submit-btn" type="Reset" style="margin-left:5px">Reset</button>
+					</div>
 				</form>
             </div>
           </section>     
@@ -420,7 +420,7 @@ if(isset($_REQUEST['txtPermAddress']) && ($_REQUEST['txtPermAddress']<>""))	{
         </main>
       </div>
       <!-- jQuery Library -->
-      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+      <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
       <!-- Materialize js -->
       <script type="text/javascript" src="js/materialize.min.js"></script>
       <!-- Skill Progress Bar -->
@@ -429,7 +429,7 @@ if(isset($_REQUEST['txtPermAddress']) && ($_REQUEST['txtPermAddress']<>""))	{
       <!-- Owl slider -->      
       <script src="js/owl.carousel.min.js"></script>    
       <!-- Mixit slider  -->
-      <script src="http://cdn.jsdelivr.net/jquery.mixitup/latest/jquery.mixitup.min.js"></script>
+      <script src="js/jquery.mixitup.min.js"></script>
       <!-- counter -->
       <script src="js/waypoints.min.js"></script>
       <script src="js/jquery.counterup.min.js"></script>     

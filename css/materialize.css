@@ -5666,7 +5666,7 @@ button.btn-floating {
 
 .btn-flat {
   box-shadow: none;
-  background-color: transparent;
+  /*background-color: transparent;*/
   color: #343434;
   cursor: pointer; }
   .btn-flat.disabled {

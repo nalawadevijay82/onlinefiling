@@ -1,6 +1,6 @@
 <?php
 require_once("connection.php");
-print_r($_REQUEST);
+//print_r($_REQUEST);
 session_start();
 
 if(!isset($_SESSION['recordId']) || $_SESSION['recordId']=="")	{
@@ -8,7 +8,7 @@ if(!isset($_SESSION['recordId']) || $_SESSION['recordId']=="")	{
 }
 
 if(isset($_REQUEST['txtName']) && ($_REQUEST['txtName']<>""))	{
-	echo "In submit";
+	//echo "In submit";
 	
 	if(!isset($_REQUEST['receiveCredit'])) 
 		$receiveCredit = "No";
@@ -225,7 +225,7 @@ if(isset($_REQUEST['txtName']) && ($_REQUEST['txtName']<>""))	{
 					</p>
 				</div>
 				<p>
-					<div align="center">
+					<div align="center" style="margin-left:20px">
 						<button class="left waves-effect btn-flat brand-text submit-btn" type="Submit">Next</button>
 						<button class="left waves-effect btn-flat brand-text submit-btn" type="Reset">Reset</button>
 					</div>
