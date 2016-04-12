@@ -1,0 +1,30 @@
+---------- Date: 2016-03-15 00:30:41 ~ IP : 66.249.79.206 ----------
+REQUEST URI : /
+MOD DETAILS:
+   modFile   : /home/firstp21/public_html/vqmod/xml/ESPONI_DAP_Classic_v1.235.xml
+   id        : DAP
+   version   : see below
+   vqmver    : 1.0.8
+   author    : Poniyoco
+
+File Name    : system/library/cart.php(3)
+VQModObject::applyMod - SEARCH NOT FOUND (ABORTING MOD): 'price'           =>
+
+----------------------------------------------------------------------
+
+
+---------- Date: 2016-03-15 00:30:52 ~ IP : 180.76.15.151 ----------
+REQUEST URI : /index.php?route=product/product&amp;product_id=3006
+MOD DETAILS:
+   modFile   : /home/firstp21/public_html/vqmod/xml/ESPONI_DAP_Classic_v1.235.xml
+   id        : DAP
+   version   : see below
+   vqmver    : 1.0.8
+   author    : Poniyoco
+
+File Name    : catalog/controller/product/product.php(0)
+VQModObject::applyMod - SEARCH NOT FOUND (ABORTING MOD): 'price'    => $this->currency->format($this->tax->calculate($discount['price'], $product_info['tax_class_id'], $this->config->get('config_tax')))
+
+----------------------------------------------------------------------
+
+

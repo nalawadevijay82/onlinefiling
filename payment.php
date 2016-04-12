@@ -111,19 +111,30 @@ $checksum_check = Checksum::verifyChecksum($recd_checksum, $all, $secret);
 							<?php 
 							//echo "<br><br>checksum: ".$checksum_check;
 							//echo "<br><br>message: ".Checksum::outputResponse($checksum_check); 
-							print_r($_REQUEST['responseDescription']); ?>
-
-							<?php
-							$query = "Insert into payment(recordId,orderId,zaakpayOrderId,responseCode,responseDescription,checksum,checksumVerified,paidFees) values('".$_SESSION['recordId']."','IT".$_SESSION['recordId']."','".$_REQUEST['orderId']."','".$_REQUEST['responseCode']."','".$_REQUEST['responseDescription']."','".$_REQUEST['checksum']."','".$checksum_check."',".$_SESSION['fees'].")";
-							$insertRes = mysqli_query($con,$query);
-							
-							//echo "<br><br>Qry: ".$query;
-							if (!$insertRes) {
-								printf("Errormessage: %s\n", $con->error);
+							//print_r($_REQUEST['responseDescription']); 
+							if(isset($_REQUEST['responseCode']) && ($_REQUEST['responseCode']==100))
+							{
+								echo "<p>The transaction was completed successfully. </p>
+								<p>Thank you for choosing us to file return. We strive to do better everyday.</p>";
 							}
 							else
 							{
-								//echo "<script>window.location='incomeDetails.php';</script>";
+								print_r($_REQUEST['responseDescription']);
+								echo '<p>Thank you for choosing us. It is recommneded to validate the information & try again or contact us at <a href="mailto:support@onlineitfiling.in">support@onlineitfiling.in</a></p>';
+							}
+
+							if(isset($_REQUEST['responseCode']))
+							{
+								$query = "Insert into payment(recordId,orderId,zaakpayOrderId,responseCode,responseDescription,checksum,checksumVerified,paidFees) values('".$_SESSION['recordId']."','IT".$_SESSION['recordId']."','".$_REQUEST['orderId']."','".$_REQUEST['responseCode']."','".$_REQUEST['responseDescription']."','".$_REQUEST['checksum']."','".$checksum_check."',".$_SESSION['fees'].")";
+								$insertRes = mysqli_query($con,$query);
+								//echo "<br><br>Qry: ".$query;
+								if (!$insertRes) {
+									printf("Errormessage: %s\n", $con->error);
+								}
+								else
+								{
+									//echo "<script>window.location='incomeDetails.php';</script>";
+								}
 							}
 							?>
 						</p>

@@ -24,7 +24,9 @@ function submitForm(){
 			form.submit();
 			}
 </script>
-<body onload="autoPop();">
+<!--<body onload="autoPop();">-->
+
+<body>
 
 <div class="center">
 <div class="ecssing">
@@ -62,7 +64,7 @@ $pincode = $data['permPincode'];
 </tr>
 <tr>	
 	<td width="50%" align="right" valign="middle">Order Id</td>
-	<td width="50%" align="center" valign="middle"><input type="text" id="orderId" name="orderId" value="<?=$_SESSION['recordId']?>" /></td>
+	<td width="50%" align="center" valign="middle"><input type="text" id="orderId" name="orderId" value="IT<?=$_SESSION['recordId']?>" /></td>
 </tr>
 <tr>
 	<td width="50%" align="right" valign="middle">return url(Optional)</td>

@@ -273,6 +273,11 @@ nav .brand-logo img {
   width: 100%;
 }
 
+#fee-structure{
+  display: inline;
+  float: left;
+  width: 100%;
+}
 
 #skill{
   background-color: #fff;  

@@ -141,7 +141,7 @@ if(isset($_REQUEST['txtPanCardNo']) && ($_REQUEST['txtPanCardNo']<>""))	{
                  <!-- <a href="index.html" class="brand-logo"><img src="img/logo.jpeg" alt="logo img"></a>  -->
                 <ul class="right hide-on-med-and-down custom-nav">                 
                   <li><a href="index.html">Home</a></li>
-                  <li class="active"><a href="blog-archive.html">Blog</a></li>                  
+                  <li class="active"><a href="#">Personal Information</a></li>                  
                 </ul>
                 <!-- For Mobile View -->
                 <ul id="slide-out" class="side-nav menu-scroll">
