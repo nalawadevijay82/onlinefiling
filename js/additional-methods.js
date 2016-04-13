@@ -46,7 +46,8 @@ jQuery.validator.addMethod("alphanumeric", function(value, element) {
 }, "Letters, numbers, and underscores only please");
 
 jQuery.validator.addMethod("lettersonly", function(value, element) {
-	return this.optional(element) || /^[a-z]+$/i.test(value);
+	//return this.optional(element) || /^[a-z]+$/i.test(value);
+	return this.optional(element) || /^[a-z\s]+$/i.test(value);		// /s is added for whitespace
 }, "Letters only please");
 
 jQuery.validator.addMethod("nowhitespace", function(value, element) {
@@ -65,6 +66,11 @@ jQuery.validator.addMethod("integer", function(value, element) {
 	return this.optional(element) || /^-?\d+$/.test(value);
 }, "A positive or negative non-decimal number please");
 
+$.validator.addMethod("pan", function(value, element)
+{
+	return this.optional(element) || /^[A-Z]{5}\d{4}[A-Z]{1}$/.test(value);
+}, "Invalid Pan Number");
+	
 /**
  * Return true, if the value is a valid vehicle identification number (VIN).
  *

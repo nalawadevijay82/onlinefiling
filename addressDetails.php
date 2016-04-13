@@ -70,8 +70,18 @@ if(isset($_REQUEST['txtPermAddress']) && ($_REQUEST['txtPermAddress']<>""))	{
 						txtCorrCity: "required",
 						selPermState: "required",
 						selCorrState: "required",
-						txtPermPostcode: "required",
-						txtCorrPostcode: "required"
+						txtPermPostcode: {
+							required:true, 
+							integer: true,
+                            minlength:6,
+                            maxlength:6
+						},
+						txtCorrPostcode: {
+							required:true, 
+							integer: true,
+                            minlength:6,
+                            maxlength:6
+						}
 					},
 					messages: {
 						txtPermAddress: "Please enter your Permenant Address",
@@ -215,7 +225,7 @@ if(isset($_REQUEST['txtPermAddress']) && ($_REQUEST['txtPermAddress']<>""))	{
 								<label class="col-sm-2 control-label input-sm" for="textinput">
 									Landmark:</label>
 								<div class="col-sm-2">
-									<input type="text" id="txtPermLandmark" placeholder="Enter Landmark" name="txtPermLandmark" maxlength="99"/>
+									<input type="text" id="txtPermLandmark" placeholder="Enter Landmark" name="txtPermLandmark" maxlength="50"/>
 								</div>
 							</div>
 							<div class="custgrp">
@@ -306,21 +316,21 @@ if(isset($_REQUEST['txtPermAddress']) && ($_REQUEST['txtPermAddress']<>""))	{
 									<label class="col-sm-2 control-label input-sm" for="textinput">
 										Address:</label>
 									<div class="col-sm-3 has-success">
-										<input type="text" id="txtCorrAddress" placeholder="Enter Address" name="txtCorrAddress" maxlength="120">
+										<input type="text" id="txtCorrAddress" placeholder="Enter Address" name="txtCorrAddress" maxlength="99">
 									</div>
 								</div>
 								<div class="custgrp">
 									<label class="col-sm-2 control-label input-sm" for="textinput">
 										Landmark:</label>
 									<div class="col-sm-2">
-										<input type="text" id="txtCorrLandmark" placeholder="Enter Landmark" name="txtCorrLandmark" maxlength="120">
+										<input type="text" id="txtCorrLandmark" placeholder="Enter Landmark" name="txtCorrLandmark" maxlength="50">
 									</div>
 								</div>
 								<div class="custgrp">
 									<label class="col-sm-2 control-label input-sm" for="textinput">
 										City:</label>
 									<div class="col-sm-2">
-										<input type="text" id="txtCorrCity" placeholder="Enter City" name="txtCorrCity" maxlength="50"/>
+										<input type="text" id="txtCorrCity" placeholder="Enter City" name="txtCorrCity" maxlength="29"/>
 									</div>
 								</div>
 								<div class="custgrp">

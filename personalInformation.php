@@ -53,6 +53,16 @@ if(isset($_REQUEST['txtPanCardNo']) && ($_REQUEST['txtPanCardNo']<>""))	{
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 	<script>
+	function ValidatePAN(panValidate) {
+        if (panValidate != "") {
+            var panPat = /^([a-zA-Z]{5})(\d{4})([a-zA-Z]{1})$/;
+            if (panValidate.search(panPat) == -1) {
+				alert('Please enter valid PAN');
+				return false;
+			}
+        }
+	}
+
 	var $j = jQuery.noConflict();
 
 	$j(function() {
@@ -72,18 +82,36 @@ if(isset($_REQUEST['txtPanCardNo']) && ($_REQUEST['txtPanCardNo']<>""))	{
 		JQUERY4U.UTIL =
 		{
 			setupFormValidation: function()
-			{
+			{	
 				//form validation rules
 				$("#personalInformation").validate({
 					rules: {
 						txtPanCardNo: {
+							pan: true,
 							required: true,
-							minlength: 10
+							minlength: 10,
+							maxlength:10
 						},
 						txtDOB: "required",
-						txtFirstName: "required",
-						txtFathersName: "required",
-						txtLastName: "required",
+						txtFirstName: {
+							required: true,
+							lettersonly: true,
+							maxlength:30
+						},
+						txtMiddleName: {
+							lettersonly: true,
+							maxlength:30
+						},
+						txtFathersName: {
+							required: true,
+							lettersonly: true,
+							maxlength:30
+						},
+						txtLastName: {
+							required: true,
+							lettersonly: true,
+							maxlength:30
+						},
 						txtMobileNo: {
 							required:true, 
 							integer: true,
@@ -96,11 +124,11 @@ if(isset($_REQUEST['txtPanCardNo']) && ($_REQUEST['txtPanCardNo']<>""))	{
 						}
 					},
 					messages: {
-						txtPanCardNo: "PAN Card No. should be 10 characters",
+						txtPanCardNo: "Please enter valid PAN card number",
 						txtDOB: "Please enter your Date of birth",
-						txtFirstName: "Please enter your First Name",
-						txtFathersName: "Please enter your Father's name",
-						txtLastName: "Please enter your Last Name",
+						txtFirstName: "Please enter your valid First Name",
+						txtFathersName: "Please enter your valid Father's name",
+						txtLastName: "Please enter your valid Last Name",
 						txtEmail: "Please enter a valid Email Address",
 						txtMobileNo: "Please enter your Mobile Number of 10 digits"
 					},
@@ -189,7 +217,7 @@ if(isset($_REQUEST['txtPanCardNo']) && ($_REQUEST['txtPanCardNo']<>""))	{
 										First Name:</label>
 									<div class="col-sm-3">
 										<input type="text" id="txtFirstName" placeholder="First Name" class="form-control  input-sm"
-											name="txtFirstName" style="text-transform: uppercase">
+											name="txtFirstName" style="text-transform: uppercase" maxlength="30">
 									</div>
 								</div>
 								<div class="custgrp">
@@ -220,7 +248,7 @@ if(isset($_REQUEST['txtPanCardNo']) && ($_REQUEST['txtPanCardNo']<>""))	{
 									<label class="col-sm-2 control-label input-sm" for="textinput">
 										Date Of Birth:</label>
 									<div class="col-sm-2">
-										<input type="text" id="datePicker" placeholder="dd-mm-yyyy" name="txtDOB" width="100px"/>
+										<input type="text" id="datePicker" placeholder="dd-mm-yyyy" name="txtDOB" width="100px" readonly='true' />
 									</div>
 								</div>
 								<div class="custgrp">
@@ -243,7 +271,7 @@ if(isset($_REQUEST['txtPanCardNo']) && ($_REQUEST['txtPanCardNo']<>""))	{
 									<label class="col-sm-2 control-label input-sm" for="textinput">
 										Email:</label>
 									<div class="col-sm-4">
-										<input type="text" ID="txtEmail" placeholder="Email ID" class="form-control input-sm" name="txtEmail">
+										<input type="text" ID="txtEmail" placeholder="Email ID" class="form-control input-sm" name="txtEmail" maxlength="60">
 									</div>
 								</div>
 								<div class="custgrp">
