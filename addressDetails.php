@@ -47,6 +47,7 @@ if(isset($_REQUEST['txtPermAddress']) && ($_REQUEST['txtPermAddress']<>""))	{
       <!-- Extra css & JS File -->
       <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 	  <script src="js/validation.js"></script>
+	  <script src="js/additional-methods.js"></script>
 
       <!-- Font -->
       <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -73,25 +74,25 @@ if(isset($_REQUEST['txtPermAddress']) && ($_REQUEST['txtPermAddress']<>""))	{
 						txtPermPostcode: {
 							required:true, 
 							integer: true,
-                            minlength:6,
-                            maxlength:6
+							minlength: 6,
+							maxlength:6
 						},
 						txtCorrPostcode: {
 							required:true, 
 							integer: true,
-                            minlength:6,
-                            maxlength:6
+							minlength: 6,
+							maxlength:6
 						}
 					},
 					messages: {
-						txtPermAddress: "Please enter your Permenant Address",
-						txtCorrAddress: "Please enter your Correspondance Address",
-						txtPermCity: "Please enter your Permenant City",
-						txtCorrCity: "Please enter your Correspondance City",
-						selPermState: "Please enter your Permenant State",
-						selCorrState: "Please enter your Correspondance State",
-						txtPermPostcode: "Please enter your Permenant Pincode",
-						txtCorrPostcode: "Please enter your Correspondance Pincode"
+						txtPermAddress: "Please enter your Permanent Address",
+						txtCorrAddress: "Please enter your Correspondence Address",
+						txtPermCity: "Please enter your Permanent City",
+						txtCorrCity: "Please enter your Correspondence City",
+						selPermState: "Please enter your Permanent State",
+						selCorrState: "Please enter your Correspondence State",
+						txtPermPostcode: "Please enter your valid Permanent Pincode",
+						txtCorrPostcode: "Please enter your valid Correspondence Pincode"
 					},
 					submitHandler: function(form) {
 						form.submit();
@@ -213,7 +214,7 @@ if(isset($_REQUEST['txtPermAddress']) && ($_REQUEST['txtPermAddress']<>""))	{
 
 					<p>
 						<div class="form-group" style="float:left;">
-						<h2 class="title">Permenant Address</h2>
+						<h2 class="title">Permanent Address</h2>
 							<div class="custgrp">
 								<label class="col-sm-2 control-label input-sm" for="textinput">
 									Address:</label>
@@ -309,7 +310,7 @@ if(isset($_REQUEST['txtPermAddress']) && ($_REQUEST['txtPermAddress']<>""))	{
 					
 						<div style="float:right;">
 						
-							<h2 class="title">Correspondance Address</h2>
+							<h2 class="title">Correspondence Address</h2>
 
 							<div class="form-group" >
 								<div class="custgrp">

@@ -15,7 +15,7 @@ if(isset($_REQUEST['txtName']) && ($_REQUEST['txtName']<>""))	{
 	else
 		$receiveCredit = "Yes";
 
-	$query = "Insert into bankInformation(recordId,receiveCredit,accountHolderName,accountNumber,accountType,bankName,branchName,IFSC,MICR) values(".$_SESSION['recordId'].",'".$receiveCredit."','".$_REQUEST['txtName']."','".$_REQUEST['txtAccountNumber']."','".$_REQUEST['accountType']."','".$_REQUEST['txtBankName']."','".$_REQUEST['txtBranch']."','".$_REQUEST['txtIFSC']."','".$_REQUEST['txtMICR']."')";
+	$query = "Insert into bankInformation(recordId,receiveCredit,accountHolderName,accountNumber,accountType,bankName,branchName,IFSC,MICR) values(".$_SESSION['recordId'].",'".$receiveCredit."','".$_REQUEST['txtName']."','".$_REQUEST['txtAccountNumber']."','".$_REQUEST['accountType']."','".$_REQUEST['txtBankName']."','".$_REQUEST['txtBranch']."','".$_REQUEST['txtIFSC']."','Not Required')";
 	$insertRes = mysqli_query($con,$query);
 	
 	if (!$insertRes) {
@@ -54,6 +54,7 @@ if(isset($_REQUEST['txtName']) && ($_REQUEST['txtName']<>""))	{
       <!-- Extra css & JS File -->
       <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 	  <script src="js/validation.js"></script>
+	  <script src="js/additional-methods.js"></script>
 
       <!-- Font -->
       <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -78,15 +79,21 @@ if(isset($_REQUEST['txtName']) && ($_REQUEST['txtName']<>""))	{
 					rules: {
 						txtName: "required",
 						txtBranch: "required",
-						txtMICR: "required",
-						txtAccountNumber: "required",
+						txtAccountNumber: {
+							required:true, 
+							integer: true,
+							maxlength:25
+						},
 						txtBankName: "required",
-						txtIFSC: "required"
+						txtIFSC: {
+							required:true,
+							maxlength:11,
+							minlength:11
+						}
 					},
 					messages: {
 						txtName: "Please enter Account Holder Name",
 						txtBranch: "Please enter Branch Name",
-						txtMICR: "Please enter MICR Code",
 						txtAccountNumber: "Please enter Account Number",
 						txtBankName: "Please enter Bank Name",
 						txtIFSC: "Please enter IFSC Code"
@@ -128,8 +135,7 @@ if(isset($_REQUEST['txtName']) && ($_REQUEST['txtName']<>""))	{
                 <!-- Image Based Logo -->                
                  <!-- <a href="index.html" class="brand-logo"><img src="img/logo.jpeg" alt="logo img"></a>  -->
                 <ul class="right hide-on-med-and-down custom-nav">                 
-                  <li><a href="index.html">Home</a></li>
-                  <li class="active"><a href="blog-archive.html">Blog</a></li>                  
+                  <li><a href="index.php">Home</a></li>
                 </ul>
                 <!-- For Mobile View -->
                 <ul id="slide-out" class="side-nav menu-scroll">
@@ -163,7 +169,7 @@ if(isset($_REQUEST['txtName']) && ($_REQUEST['txtName']<>""))	{
 				  <h2 class="title">Bank Information</h2>
 
 					<p>W.E.F. AY 2011-12 it is mandatory to provide bank account details in Income Tax return irrespective of tax refund. Enter bank account details: </p>
-					<p><input type="checkbox" name="receiveCredit" id="receiveCredit" value="Yes" checked="checked" onclick="return false">&nbsp; Would you like to receive credit (if any) via ECS (Electronic Clearing System)?<br></p>
+					<p><input type="checkbox" name="receiveCredit" id="receiveCredit" value="Yes" checked="checked" disabled="disabled" onclick="return false">&nbsp; Would you like to receive credit (if any) via ECS (Electronic Clearing System)?<br></p>
 						<div class="form-group">
 							<div style="float:left;">
 								<div class="custgrp">
@@ -193,7 +199,7 @@ if(isset($_REQUEST['txtName']) && ($_REQUEST['txtName']<>""))	{
 									<label class="col-sm-2 control-label input-sm" for="textinput">
 										MICR Code:</label>
 									<div class="col-sm-3">
-										<input type="text" id="txtMICR" placeholder="MICR Code" class="form-control input-sm" maxlength="15" name="txtMICR" value="MICR" readOnly>
+										<label>Not Required</label>
 									</div>
 								</div>
 							</div>
@@ -225,9 +231,9 @@ if(isset($_REQUEST['txtName']) && ($_REQUEST['txtName']<>""))	{
 					</p>
 				</div>
 				<p>
-					<div align="center" style="margin-left:20px">
+					<div align="center" style="margin-left:25px">
 						<button class="left waves-effect btn-flat brand-text submit-btn" type="Submit">Next</button>
-						<button class="left waves-effect btn-flat brand-text submit-btn" type="Reset">Reset</button>
+						<button class="left waves-effect btn-flat brand-text submit-btn" type="Reset" style="margin-left:5px">Reset</button>
 					</div>
 				</p>
 				</form>

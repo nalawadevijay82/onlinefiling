@@ -1,12 +1,13 @@
 <?php
 require_once("connection.php");
 session_start();
+$_SESSION['coupon'] = "";
 
 $arr = array();
 
 if(!isset($_SESSION['recordId']) || $_SESSION['recordId']=="")	{
 	$arr['result'] = "Error";
-	$arr['msg'] = "Error while processing data";
+	$arr['msg'] = "<font color='red'>Error while processing data</font>";
 	echo json_encode($arr);
 	exit;
 }
@@ -22,7 +23,7 @@ if($rows==0)
 	$arr['result'] = "Error";
 	$arr['fees'] = $fees;
 	$_SESSION['fees'] = $fees;
-	$arr['msg'] = "Coupon Code is not valid or expired";
+	$arr['msg'] = "<font color='red'>Coupon Code is not valid or expired</font>";
 	echo json_encode($arr);
 	exit;
 }
@@ -42,9 +43,10 @@ if(($financialYear == "2015-16") || ($financialYear == "2014-15" && $appliedFor 
 	$revisedFees = $fees - $discount;
 
 	$_SESSION['fees'] = $revisedFees;
+	$_SESSION['coupon'] = $q;
 
 	$arr['result'] = "Success";
-	$arr['msg'] = "Coupon Code is applied";
+	$arr['msg'] = "<font color='green'>Coupon Code is applied</font>";
 	$arr['rate'] = $rate;
 	$arr['fees'] = $revisedFees;
 	echo json_encode($arr);
@@ -55,7 +57,7 @@ else
 	$arr['result'] = "Error";
 	$arr['fees'] = $fees;
 	$_SESSION['fees'] = $fees;
-	$arr['msg'] = "Coupon Code is not valid or expired";
+	$arr['msg'] = "<font color='red'>Coupon Code is not valid or expired</font>";
 	echo json_encode($arr);
 	exit;	
 }

@@ -1,5 +1,5 @@
 <?php
-//require_once("connection.php");
+require_once("connection.php");
 ?>
 <!DOCTYPE html>
   <html>
@@ -24,11 +24,7 @@
       <!-- Font -->
       <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-	  <style type="text/css">
-	  ul li {
-		list-style-type: disc; !important;
-	  }
-	  
+	  <style type="text/css">	  
 	  table, th, td {
 		border: medium;	!important;
 	  }
@@ -52,7 +48,7 @@
                 <!-- LOGO -->
 
                 <!-- TEXT BASED LOGO -->
-                <a href="index.html" class="brand-logo"><img src="img/logo.gif"></a>
+                <a href="index.php" class="brand-logo"><img src="img/logo.gif"></a>
 
                 <!-- Image Based Logo -->                
                  <!-- <a href="index.html" class="brand-logo"><img src="img/logo.jpeg" alt="logo img"></a>  -->
@@ -235,10 +231,10 @@
 				  <p>&nbsp;</p>
 				  <p>
 				  <ul>
-				  <li type="disc">The above fee structure is for online upload of documents</li>
-				  <li type="disc">To apply online discount use discount code - ONLINEUP</li>
-				  <li type="disc">For documents shared via email would cost Rs.20 extra.</li>
-				  <li type="disc">For documents shared via Whatsapp would cost Rs.50 extra.</li>
+				  <li>&bull;&nbsp;&nbsp;The above fee structure is for online upload of documents</li>
+				  <li>&bull;&nbsp;&nbsp;To apply online discount use discount code - ONLINEUP</li>
+				  <li>&bull;&nbsp;&nbsp;For documents shared via email would cost Rs.20 extra.</li>
+				  <li>&bull;&nbsp;&nbsp;For documents shared via Whatsapp would cost Rs.50 extra.</li>
 				  </ul>
                 </div>
               </div>
@@ -468,7 +464,10 @@
                     <div class="footer-inner">
                       <!-- Bottom to Up Btn -->
                       <button class="btn-floating btn-large up-btn"><i class="mdi-navigation-expand-less"></i></button>
-                     <p class="design-info">Designed By <a href="http://www.markups.io/">MarkUps.io</a></p>
+                      <p align="center">
+					  <img src="img/ERI Authorized1.png">&nbsp;&nbsp;<img src="img/ERIAuthorized.png"> &nbsp;&nbsp;&nbsp;
+					  <a href="privacyPolicy.html" target="_blank">Privacy Policy</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="refundPolicy.html" target="_blank">Refund Policy</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="termsandconditions.html" target="_blank">General Terms & Conditions</a></p>
+					  <p><font size="1">Designed By <a href="http://www.markups.io/">MarkUps.io</a></font></p>
                     </div>
                   </div>
                 </div>

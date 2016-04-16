@@ -1,8 +1,10 @@
 <?php
 require_once("../connection.php");
-//print_r($_REQUEST);
+print_r($_REQUEST);
 session_start();
-//print_r($_SESSION);
+//echo "<pre>";
+//var_dump($_SESSION);
+//echo "</pre>";
 
 if(!isset($_SESSION['recordId']) || $_SESSION['recordId']=="")	{
 	echo "<script>window.location='../personalInformation.php';</script>";
@@ -19,10 +21,10 @@ function autoPop(){
 };
 
 function submitForm(){
-			var form = document.forms[0];
-			form.action = "posttozaakpay.php";
-			form.submit();
-			}
+	var form = document.forms[0];
+	form.action = "posttozaakpay.php";
+	form.submit();
+}
 </script>
 <!--<body onload="autoPop();">-->
 
@@ -125,9 +127,16 @@ $pincode = $data['permPincode'];
 	<td width="50%" align="right" valign="middle">Currency</td>
 	<td width="50%" align="center" valign="middle"><input type="text" name="currency" value="INR" /></td>
 </tr>
+<?php
+$payment = 0;
+if(isset($_REQUEST['postalCharges']) && ($_REQUEST['postalCharges'] == "Yes"))
+	$payment = ($_SESSION['fees']*100)+2000;
+else
+	$payment = $_SESSION['fees']*100;
+?>
 <tr>	
 	<td width="50%" align="right" valign="middle">Amount In Paisa</td>
-	<td width="50%" align="center" valign="middle"><input type="text" name="amount" value="<?=$_SESSION['fees']*100?>" /> </td>
+	<td width="50%" align="center" valign="middle"><input type="text" name="amount" value="<?=$payment?>" /> </td>
 </tr>
 <tr>
 	<td width="50%" align="right" valign="middle">IPaddress</td>

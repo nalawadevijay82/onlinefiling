@@ -220,6 +220,7 @@ if(!isset($_SESSION['recordId']) || $_SESSION['recordId']=="")	{
 						echo "<p><strong>Fees: <span id='fees' name='fees'>".$charges."</span></strong>";
 						?>
 						<br>
+						<input type="checkbox" name="postalCharges" id="postalCharges" value="Yes" checked="checked">&nbsp; Postal Charges - &nbsp; 20<br>
 						Place: Pune<br>
 						Date: <?=date("d-m-Y")?><br>
 						<p><input type="checkbox" name="receiveCredit" id="receiveCredit" value="Yes" onClick="finishButton();">&nbsp; <strong>Accept Terms and Conditions</strong><br></p>
