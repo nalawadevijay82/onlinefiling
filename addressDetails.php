@@ -10,6 +10,9 @@ if(!isset($_SESSION['recordId']) || $_SESSION['recordId']=="")	{
 if(isset($_REQUEST['txtPermAddress']) && ($_REQUEST['txtPermAddress']<>""))	{
 	//echo "In submit";
 
+	$deleteQry = "delete from addressDetails where recordId = ".$_SESSION['recordId'];
+	$insertRes = mysqli_query($con,$deleteQry);
+
 	$query = "Insert into addressDetails(permAdd,permLandmark,permCity,permState,permPincode,permCountry,corrAdd,corrLandmark,corrCity,corrState,corrPincode,corrCountry,recordId) values('".$_REQUEST['txtPermAddress']."','".$_REQUEST['txtPermLandmark']."','".$_REQUEST['txtPermCity']."','".$_REQUEST['selPermState']."','".$_REQUEST['txtPermPostcode']."','India','".$_REQUEST['txtCorrAddress']."','".$_REQUEST['txtCorrLandmark']."','".$_REQUEST['txtCorrCity']."','".$_REQUEST['selCorrState']."','".$_REQUEST['txtCorrPostcode']."','India',".$_SESSION['recordId'].")";
 	$insertRes = mysqli_query($con,$query);
 	
@@ -174,13 +177,12 @@ if(isset($_REQUEST['txtPermAddress']) && ($_REQUEST['txtPermAddress']<>""))	{
                 <!-- LOGO -->
 
                 <!-- TEXT BASED LOGO -->
-                <a href="index.html" class="brand-logo">Online IT Filing : Upload Income Details / Proofs</a>
+                <a href="index.php" class="brand-logo">Online IT Filing : Upload Income Details / Proofs</a>
                 
                 <!-- Image Based Logo -->                
                  <!-- <a href="index.html" class="brand-logo"><img src="img/logo.jpeg" alt="logo img"></a>  -->
                 <ul class="right hide-on-med-and-down custom-nav">                 
-                  <li><a href="index.html">Home</a></li>
-                  <li class="active"><a href="blog-archive.html">Blog</a></li>                  
+                  <li><a href="index.php">Home</a></li>
                 </ul>
                 <!-- For Mobile View -->
                 <ul id="slide-out" class="side-nav menu-scroll">
@@ -412,22 +414,9 @@ if(isset($_REQUEST['txtPermAddress']) && ($_REQUEST['txtPermAddress']<>""))	{
             </div>
           </section>     
           <!-- Start Footer -->
-          <footer id="footer" role="contentinfo">           
-            <!-- Start Footer Bottom -->
-            <div class="footer-bottom">
-              <div class="container">
-                <div class="row">
-                  <div class="col s12">
-                    <div class="footer-inner">
-                      <!-- Bottom to Up Btn -->
-                      <button class="btn-floating btn-large up-btn"><i class="mdi-navigation-expand-less"></i></button>
-                      <p class="design-info"><div align=" <img src="img/ERI Authorized1.png">&nbsp;&nbsp;<img src="img/ERIAuthorized.png"> Privacy Policy&nbsp;&nbsp;&nbsp;&nbsp;Refund Policy &nbsp;&nbsp;&nbsp;&nbsp; General Terms & Conditions</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </footer>               
+		  <?php
+		  require_once("footer.html");
+		  ?>
         </main>
       </div>
       <!-- jQuery Library -->

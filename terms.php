@@ -74,11 +74,27 @@ if(!isset($_SESSION['recordId']) || $_SESSION['recordId']=="")	{
 		  if($('#receiveCredit:checkbox:checked').length > 0)
 		  {
 			  $('#submitDiv').show();
+			  $('#submitDivAdmin').show();
 		  }
 		  else
 		  {
 			  $('#submitDiv').hide();
+			  $('#submitDivAdmin').hide();
 		  }
+	  }
+	  
+	  function paymentGateway()
+	  {
+		  $("#terms").attr("action", "Zaakpay/postData.php");
+		  $('#paymentType').val('zaakpay');
+		  $("#terms").submit();
+	  }
+
+	  function finishPayment()
+	  {
+		  $("#terms").attr("action", "payment.php");
+		  $('#paymentType').val('manual');
+		  $("#terms").submit();
 	  }
 	  </script>
 	</head>    
@@ -99,18 +115,16 @@ if(!isset($_SESSION['recordId']) || $_SESSION['recordId']=="")	{
                 <!-- LOGO -->
 
                 <!-- TEXT BASED LOGO -->
-                <a href="index.html" class="brand-logo">Online IT Filing : Terms &amp; COndition</a>
+                <a href="index.php" class="brand-logo">Online IT Filing : Terms &amp; COndition</a>
                 
                 <!-- Image Based Logo -->                
                  <!-- <a href="index.html" class="brand-logo"><img src="img/logo.jpeg" alt="logo img"></a>  -->
                 <ul class="right hide-on-med-and-down custom-nav">                 
-                  <li><a href="index.html">Home</a></li>
-                  <li class="active"><a href="blog-archive.html">Blog</a></li>                  
+                  <li><a href="index.php">Home</a></li>
                 </ul>
                 <!-- For Mobile View -->
                 <ul id="slide-out" class="side-nav menu-scroll">
-                  <li><a href="index.html">Home</a></li>
-                  <li><a href="blog-archive.html">Blog</a></li>
+                  <li><a href="index.php">Home</a></li>
                 </ul>
                 <a href="#" data-activates="slide-out" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
               </div>
@@ -135,7 +149,7 @@ if(!isset($_SESSION['recordId']) || $_SESSION['recordId']=="")	{
               <div class="row">
                 <div class="col s28 m18 28">
                   <div class="blog-content">
-					<form name="terms" id="terms" method="POST" action="Zaakpay/postData.php">
+					<form name="terms" id="terms" method="POST">
 					  <h2 class="title">Terms &amp; Conditions</h2>
 
 						<?php
@@ -226,11 +240,24 @@ if(!isset($_SESSION['recordId']) || $_SESSION['recordId']=="")	{
 						<p><input type="checkbox" name="receiveCredit" id="receiveCredit" value="Yes" onClick="finishButton();">&nbsp; <strong>Accept Terms and Conditions</strong><br></p>
 						<p>
 							<div align="center" id="submitDiv" style="display:none;">
-								<p>Note - Clicking on Finish button will proceed you to the payment gateway. Please keep your debit/credit card avaliable to make payment. Thank you. </p>
+								<p>Note - Clicking on below button will proceed you to the payment gateway. Please keep your debit/credit card avaliable to make payment. Thank you. </p>
 
-								<button class="left waves-effect btn-flat brand-text submit-btn" name="submit" type="Submit">Finish</button>
+								<button class="left waves-effect btn-flat brand-text submit-btn" name="payment" type="Button" value="payment" onClick="paymentGateway()">Proceed to Payment</button>
 							</div>
 						</p>
+						<p>
+							<div align="center" id="submitDivAdmin" style="display:none;">
+							<?php	if(isset($_SESSION['admin']) && ($_SESSION['admin'] == "true"))	{	?>
+								<p>&nbsp;</p>
+								<p>&nbsp;</p>
+								<p><strong>For admin user</strong> - As you've already logged in to admin panel, you're seeing this section. Please check below checkbox if customer has paid the amount & click on Finish button to proceed without payment gateway.</p>
+
+								<p><input type="checkbox" name="amountPaid" id="amountPaid" value="Paid">&nbsp; Customer has paid the amount</p>
+								<p><button class="left waves-effect btn-flat brand-text submit-btn" name="finish" type="Button" value="finish" onClick="finishPayment()">Finish</button></p>
+							<?php	}	?>
+							</div>
+						</p>
+						<input type="hidden" name="paymentType" id="paymentType">
 					</form>
 				</div>
 			  </div> 	
@@ -238,22 +265,9 @@ if(!isset($_SESSION['recordId']) || $_SESSION['recordId']=="")	{
 		   </div>
           </section>     
           <!-- Start Footer -->
-          <footer id="footer" role="contentinfo">           
-            <!-- Start Footer Bottom -->
-            <div class="footer-bottom">
-              <div class="container">
-                <div class="row">
-                  <div class="col s12">
-                    <div class="footer-inner">
-                      <!-- Bottom to Up Btn -->
-                      <button class="btn-floating btn-large up-btn"><i class="mdi-navigation-expand-less"></i></button>
-                      <p class="design-info"><div align=" <img src="img/ERI Authorized1.png">&nbsp;&nbsp;<img src="img/ERIAuthorized.png"> Privacy Policy&nbsp;&nbsp;&nbsp;&nbsp;Refund Policy &nbsp;&nbsp;&nbsp;&nbsp; General Terms & Conditions</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </footer>               
+		  <?php
+		  require_once("footer.html");
+		  ?>
         </main>
       </div>
       <!-- jQuery Library -->

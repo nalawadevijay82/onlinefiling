@@ -1,7 +1,10 @@
 <?php
 require_once("connection.php");
+print_r($_REQUEST);
+exit;
+
 require_once('Zaakpay/checksum.php');
-//print_r($_REQUEST);
+
 session_start();
 //print_r($_SESSION);
 
@@ -69,18 +72,16 @@ $checksum_check = Checksum::verifyChecksum($recd_checksum, $all, $secret);
                 <!-- LOGO -->
 
                 <!-- TEXT BASED LOGO -->
-                <a href="index.html" class="brand-logo">Online IT Filing : Payment Information</a>
+                <a href="index.php" class="brand-logo">Online IT Filing : Payment Information</a>
                 
                 <!-- Image Based Logo -->                
                  <!-- <a href="index.html" class="brand-logo"><img src="img/logo.jpeg" alt="logo img"></a>  -->
                 <ul class="right hide-on-med-and-down custom-nav">                 
-                  <li><a href="index.html">Home</a></li>
-                  <li class="active"><a href="blog-archive.html">Blog</a></li>                  
+                  <li><a href="index.php">Home</a></li>
                 </ul>
                 <!-- For Mobile View -->
                 <ul id="slide-out" class="side-nav menu-scroll">
-                  <li><a href="index.html">Home</a></li>
-                  <li><a href="blog-archive.html">Blog</a></li>
+                  <li><a href="index.php">Home</a></li>
                 </ul>
                 <a href="#" data-activates="slide-out" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
               </div>
@@ -134,6 +135,7 @@ $checksum_check = Checksum::verifyChecksum($recd_checksum, $all, $secret);
 								else
 								{
 									//echo "<script>window.location='incomeDetails.php';</script>";
+									session_destroy();
 								}
 							}
 							?>

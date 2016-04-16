@@ -15,6 +15,9 @@ if(isset($_REQUEST['txtName']) && ($_REQUEST['txtName']<>""))	{
 	else
 		$receiveCredit = "Yes";
 
+	$deleteQry = "delete from bankInformation where recordId = ".$_SESSION['recordId'];
+	$insertRes = mysqli_query($con,$deleteQry);
+
 	$query = "Insert into bankInformation(recordId,receiveCredit,accountHolderName,accountNumber,accountType,bankName,branchName,IFSC,MICR) values(".$_SESSION['recordId'].",'".$receiveCredit."','".$_REQUEST['txtName']."','".$_REQUEST['txtAccountNumber']."','".$_REQUEST['accountType']."','".$_REQUEST['txtBankName']."','".$_REQUEST['txtBranch']."','".$_REQUEST['txtIFSC']."','Not Required')";
 	$insertRes = mysqli_query($con,$query);
 	
@@ -96,7 +99,7 @@ if(isset($_REQUEST['txtName']) && ($_REQUEST['txtName']<>""))	{
 						txtBranch: "Please enter Branch Name",
 						txtAccountNumber: "Please enter Account Number",
 						txtBankName: "Please enter Bank Name",
-						txtIFSC: "Please enter IFSC Code"
+						txtIFSC: "Please enter valid IFSC Code"
 					},
 					submitHandler: function(form) {
 						form.submit();
@@ -130,7 +133,7 @@ if(isset($_REQUEST['txtName']) && ($_REQUEST['txtName']<>""))	{
                 <!-- LOGO -->
 
                 <!-- TEXT BASED LOGO -->
-                <a href="index.html" class="brand-logo">Online IT Filing : Bank Information</a>
+                <a href="index.php" class="brand-logo">Online IT Filing : Bank Information</a>
                 
                 <!-- Image Based Logo -->                
                  <!-- <a href="index.html" class="brand-logo"><img src="img/logo.jpeg" alt="logo img"></a>  -->
@@ -139,8 +142,7 @@ if(isset($_REQUEST['txtName']) && ($_REQUEST['txtName']<>""))	{
                 </ul>
                 <!-- For Mobile View -->
                 <ul id="slide-out" class="side-nav menu-scroll">
-                  <li><a href="index.html">Home</a></li>
-                  <li><a href="blog-archive.html">Blog</a></li>
+                  <li><a href="index.php">Home</a></li>
                 </ul>
                 <a href="#" data-activates="slide-out" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
               </div>
@@ -244,22 +246,9 @@ if(isset($_REQUEST['txtName']) && ($_REQUEST['txtName']<>""))	{
             </div>
           </section>     
           <!-- Start Footer -->
-          <footer id="footer" role="contentinfo">           
-            <!-- Start Footer Bottom -->
-            <div class="footer-bottom">
-              <div class="container">
-                <div class="row">
-                  <div class="col s12">
-                    <div class="footer-inner">
-                      <!-- Bottom to Up Btn -->
-                      <button class="btn-floating btn-large up-btn"><i class="mdi-navigation-expand-less"></i></button>
-                      <p class="design-info"><div align=" <img src="img/ERI Authorized1.png">&nbsp;&nbsp;<img src="img/ERIAuthorized.png"> Privacy Policy&nbsp;&nbsp;&nbsp;&nbsp;Refund Policy &nbsp;&nbsp;&nbsp;&nbsp; General Terms & Conditions</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </footer>               
+		  <?php
+		  require_once("footer.html");
+		  ?>
         </main>
       </div>
       <!-- jQuery Library -->

@@ -7,7 +7,7 @@ $_SESSION['admin'] = "";
 $flag = 0;
 if(isset($_REQUEST['Submit']) && ($_REQUEST['Submit'] == "Submit"))
 {
-	echo "<br>in login";
+	//echo "<br>in login";
 	$query = "SELECT * FROM `users` where name = '".$_REQUEST['txtUserName']."' and password = '".$_REQUEST['txtPassword']."'";
 	$res = mysqli_query($con,$query);
 	if(mysqli_num_rows($res)>0)

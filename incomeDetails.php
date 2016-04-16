@@ -18,6 +18,7 @@ if(isset($_FILES['file1']['name']) && ($_FILES['file1']['name']<>""))	{
 	$file5 = "";
 	$file6 = "";
 
+	//To store passwords in a file name
 	$txtFile1 = "";
 	$txtFile2 = "";
 	$txtFile3 = "";
@@ -32,10 +33,27 @@ if(isset($_FILES['file1']['name']) && ($_FILES['file1']['name']<>""))	{
 	if(isset($_REQUEST['txtFile5']) && $_REQUEST['txtFile5']<>"")	$txtFile5 = "_".$_REQUEST['txtFile5'];
 	if(isset($_REQUEST['txtFile6']) && $_REQUEST['txtFile6']<>"")	$txtFile6 = "_".$_REQUEST['txtFile6'];
 	
+	$directcoryPath = "uploaded_forms/".$_SESSION['pan'];
+	if (!file_exists($directcoryPath)) {
+		mkdir($directcoryPath, 0777, true);
+	}
+	
+	$directcoryPath = "uploaded_forms/".$_SESSION['pan']."/".$_REQUEST['selIncomeYear'];
+	if (!file_exists($directcoryPath)) {
+		mkdir($directcoryPath, 0777, true);
+	}
+
+	//To get first name and last name
+	$query = "SELECT * FROM `personalinformation` where id = ".$_SESSION['recordId'];
+	$res = mysqli_query($con,$query);
+	$data=mysqli_fetch_array($res,MYSQLI_ASSOC);
+	$firstName = $data['FirstName'];
+	$lastName = $data['LastName'];
+
 	if(isset($_FILES['file1']['name']) && $_FILES['file1']['name']<>"")
 	{
 		$flag = true;
-		$file1 = "uploaded_forms/".$_SESSION['pan']."_".$_REQUEST['selIncomeYear'].$txtFile1."_".$_FILES['file1']['name'];
+		$file1 = $directcoryPath."/".$firstName."_".$lastName.$txtFile1."_".$_FILES['file1']['name'];
 		if (move_uploaded_file($_FILES["file1"]["tmp_name"], $file1)) {
 			//echo "<br>The file ". basename( $_FILES["file1"]["name"]). " has been uploaded.";
 		} else {
@@ -46,7 +64,7 @@ if(isset($_FILES['file1']['name']) && ($_FILES['file1']['name']<>""))	{
 	
 	if(isset($_FILES['file2']['name']) && $_FILES['file2']['name']<>"")
 	{
-		$file2 = "uploaded_forms/".$_SESSION['pan']."_".$_REQUEST['selIncomeYear'].$txtFile2."_".$_FILES['file2']['name'];
+		$file2 = $directcoryPath."/".$firstName."_".$lastName.$txtFile2."_".$_FILES['file2']['name'];
 		if (move_uploaded_file($_FILES["file2"]["tmp_name"], $file2)) {
 			//echo "<br>The file ". basename( $_FILES["file2"]["name"]). " has been uploaded.";
 		} else {
@@ -57,7 +75,7 @@ if(isset($_FILES['file1']['name']) && ($_FILES['file1']['name']<>""))	{
 
 	if(isset($_FILES['file3']['name']) && $_FILES['file3']['name']<>"")
 	{
-		$file3 = "uploaded_forms/".$_SESSION['pan']."_".$_REQUEST['selIncomeYear'].$txtFile3."_".$_FILES['file3']['name'];
+		$file3 = $directcoryPath."/".$firstName."_".$lastName.$txtFile3."_".$_FILES['file3']['name'];
 		if (move_uploaded_file($_FILES["file3"]["tmp_name"], $file3)) {
 			//echo "<br>The file ". basename( $_FILES["file3"]["name"]). " has been uploaded.";
 		} else {
@@ -68,7 +86,7 @@ if(isset($_FILES['file1']['name']) && ($_FILES['file1']['name']<>""))	{
 	
 	if(isset($_FILES['file4']['name']) && $_FILES['file4']['name']<>"")
 	{
-		$file4 = "uploaded_forms/".$_SESSION['pan']."_".$_REQUEST['selIncomeYear'].$txtFile4."_".$_FILES['file4']['name'];
+		$file4 = $directcoryPath."/".$firstName."_".$lastName.$txtFile4."_".$_FILES['file4']['name'];
 		if (move_uploaded_file($_FILES["file4"]["tmp_name"], $file4)) {
 			//echo "<br>The file ". basename( $_FILES["file4"]["name"]). " has been uploaded.";
 		} else {
@@ -79,7 +97,7 @@ if(isset($_FILES['file1']['name']) && ($_FILES['file1']['name']<>""))	{
 	
 	if(isset($_FILES['file5']['name']) && $_FILES['file5']['name']<>"")
 	{
-		$file5 = "uploaded_forms/".$_SESSION['pan']."_".$_REQUEST['selIncomeYear'].$txtFile5."_".$_FILES['file5']['name'];
+		$file5 = $directcoryPath."/".$firstName."_".$lastName.$txtFile5."_".$_FILES['file5']['name'];
 		if (move_uploaded_file($_FILES["file5"]["tmp_name"], $file5)) {
 			//echo "<br>The file ". basename( $_FILES["file5"]["name"]). " has been uploaded.";
 		} else {
@@ -90,7 +108,7 @@ if(isset($_FILES['file1']['name']) && ($_FILES['file1']['name']<>""))	{
 	
 	if(isset($_FILES['file6']['name']) && $_FILES['file6']['name']<>"")
 	{
-		$file6 = "uploaded_forms/".$_SESSION['pan']."_".$_REQUEST['selIncomeYear'].$txtFile6."_".$_FILES['file6']['name'];
+		$file6 = $directcoryPath."/".$firstName."_".$lastName.$txtFile6."_".$_FILES['file6']['name'];
 		if (move_uploaded_file($_FILES["file6"]["tmp_name"], $file6)) {
 			//echo "<br>The file ". basename( $_FILES["file6"]["name"]). " has been uploaded.";
 		} else {
@@ -100,6 +118,9 @@ if(isset($_FILES['file1']['name']) && ($_FILES['file1']['name']<>""))	{
 	}
 
 	if($flag)	{
+		$deleteQry = "delete from formdetails where recordId = ".$_SESSION['recordId'];
+		$insertRes = mysqli_query($con,$deleteQry);
+
 		$query = "Insert into formdetails(financialYear,formCount,form1,form1Password,form2,form2Password,form3,form3Password,form4,form4Password,form5,form5Password,form6,form6Password,recordId) values('".$_REQUEST['selIncomeYear']."','".$_REQUEST['selForm16']."','".$file1."','".$_REQUEST['txtFile1']."','".$file2."','".$_REQUEST['txtFile2']."','".$file3."','".$_REQUEST['txtFile3']."','".$file4."','".$_REQUEST['txtFile4']."','".$file5."','".$_REQUEST['txtFile5']."','".$file6."','".$_REQUEST['txtFile6']."',".$_SESSION['recordId'].")";
 		$insertRes = mysqli_query($con,$query);
 		
@@ -268,18 +289,16 @@ if(isset($_FILES['file1']['name']) && ($_FILES['file1']['name']<>""))	{
                 <!-- LOGO -->
 
                 <!-- TEXT BASED LOGO -->
-                <a href="index.html" class="brand-logo">Online IT Filing : Upload Income Details / Proofs</a>
+                <a href="index.php" class="brand-logo">Online IT Filing : Upload Income Details / Proofs</a>
                 
                 <!-- Image Based Logo -->                
                  <!-- <a href="index.html" class="brand-logo"><img src="img/logo.jpeg" alt="logo img"></a>  -->
                 <ul class="right hide-on-med-and-down custom-nav">                 
-                  <li><a href="index.html">Home</a></li>
-                  <li class="active"><a href="blog-archive.html">Blog</a></li>                  
+                  <li><a href="index.php">Home</a></li>
                 </ul>
                 <!-- For Mobile View -->
                 <ul id="slide-out" class="side-nav menu-scroll">
-                  <li><a href="index.html">Home</a></li>
-                  <li><a href="blog-archive.html">Blog</a></li>
+                  <li><a href="index.php">Home</a></li>
                 </ul>
                 <a href="#" data-activates="slide-out" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
               </div>
@@ -384,23 +403,9 @@ if(isset($_FILES['file1']['name']) && ($_FILES['file1']['name']<>""))	{
 			  </div> 	
             </div>
           </section>     
-          <!-- Start Footer -->
-          <footer id="footer" role="contentinfo">           
-            <!-- Start Footer Bottom -->
-            <div class="footer-bottom">
-              <div class="container">
-                <div class="row">
-                  <div class="col s12">
-                    <div class="footer-inner">
-                      <!-- Bottom to Up Btn -->
-                      <button class="btn-floating btn-large up-btn"><i class="mdi-navigation-expand-less"></i></button>
-                      <p class="design-info"><div align=" <img src="img/ERI Authorized1.png">&nbsp;&nbsp;<img src="img/ERIAuthorized.png"> Privacy Policy&nbsp;&nbsp;&nbsp;&nbsp;Refund Policy &nbsp;&nbsp;&nbsp;&nbsp; General Terms & Conditions</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </footer>               
+		  <?php
+		  require_once("footer.html");
+		  ?>
         </main>
       </div>
       <!-- jQuery Library -->

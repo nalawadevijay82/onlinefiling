@@ -46,10 +46,11 @@ $mobile = $data['Mobile'];
 $query = "SELECT * FROM `addressdetails` where recordId = ".$_SESSION['recordId'];
 $res = mysqli_query($con,$query);
 $data=mysqli_fetch_array($res,MYSQLI_ASSOC);
-$address = $data['permAdd'];
-$city = $data['permCity'];
-$state = $data['permState'];
-$pincode = $data['permPincode'];
+$address = $data['corrAdd'];
+$city = $data['corrCity'];
+$state = $data['corrState'];
+$pincode = $data['corrPincode'];
+$country = $data['corrCountry'];
 ?>
 						
 <form action="posttozaakpay.php" method="post">
@@ -100,7 +101,7 @@ $pincode = $data['permPincode'];
 </tr>
 <tr>
 	<td width="50%" align="right" valign="middle">Buyer Country</td>
-	<td width="50%" align="center" valign="middle"><input type="text" name="buyerCountry" value="India" /> </td>
+	<td width="50%" align="center" valign="middle"><input type="text" name="buyerCountry" value="<?=$country?>" /> </td>
 </tr>
 <tr>
 	<td width="50%" align="right" valign="middle">Buyer Pincode</td>
